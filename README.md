@@ -1,0 +1,35 @@
+# Science Exhibition Guide
+
+科學展覽（科展）指導教學網站原型，將科展學習流程拆成可教、可練、可檢核、可播放的網頁模組。
+
+## 內容
+
+- 單頁式教學網站：`science_fair_guidance_article.html`
+- 首屏視覺素材：`assets/science-fair-workspace.png`
+- 八大流程網頁簡報資料與播放器邏輯：`assets/science-fair-slide-decks.js`
+- 原始文章備份：`.docx`、`.doc`、`.pdf`、`.md`
+
+## 主要功能
+
+- 科展學習地圖
+- 八大教學流程說明
+- 72 頁網頁簡報，每頁使用純 HTML/CSS 插圖
+- 題目句型產生器
+- 題目可行性評分
+- 研究動機草稿產生
+- 口試模擬抽題
+- 可儲存的章節檢核工具
+
+## 使用方式
+
+直接用瀏覽器開啟：
+
+```text
+science_fair_guidance_article.html
+```
+
+此網站目前為純前端靜態頁面，不需要啟動伺服器。
+
+## 儲存機制
+
+章節檢核工具使用瀏覽器 `localStorage` 儲存檢核紀錄。資料會保存在目前瀏覽器與目前網域／檔案路徑下。

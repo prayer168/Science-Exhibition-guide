@@ -1,0 +1,2354 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>科展指導教學網站｜從題目發想到複試口頭報告</title>
+  <meta name="description" content="科學展覽指導教學網站，將科展拆成題目、文獻、動機、實驗設計、資料分析、討論結論、作品書與口頭報告的完整學習流程。">
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #586777;
+      --paper: #ffffff;
+      --mist: #eef5f2;
+      --line: #d7e1dd;
+      --green: #1f7a5a;
+      --teal: #137b85;
+      --blue: #243b6b;
+      --yellow: #f2b84b;
+      --coral: #d96b55;
+      --shadow: 0 14px 36px rgba(23, 32, 42, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: #f8faf9;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(10, 21, 31, .86) 0%, rgba(10, 21, 31, .70) 38%, rgba(10, 21, 31, .26) 100%),
+        url("assets/science-fair-workspace.png") center right / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 130px;
+      background: linear-gradient(to top, rgba(248, 250, 249, 1), rgba(248, 250, 249, 0));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      padding: 56px 0 96px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+      color: rgba(255,255,255,.92);
+      font-size: .92rem;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 18px 0 16px;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 690px;
+      margin: 0 0 28px;
+      color: rgba(255,255,255,.9);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #102018;
+      background: var(--yellow);
+      box-shadow: 0 12px 24px rgba(0,0,0,.18);
+    }
+
+    .btn-ghost {
+      color: #fff;
+      border-color: rgba(255,255,255,.5);
+      background: rgba(255,255,255,.1);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #2f4051;
+      text-decoration: none;
+      font-size: .94rem;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background: var(--mist);
+      color: var(--green);
+    }
+
+    section {
+      padding: 68px 0;
+    }
+
+    .band {
+      background: #f8faf9;
+    }
+
+    .band-alt {
+      background: #ffffff;
+      border-block: 1px solid var(--line);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      color: var(--blue);
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      max-width: 780px;
+      color: var(--muted);
+    }
+
+    .meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta-list li,
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      color: #33485c;
+      padding: 5px 10px;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(23, 32, 42, .06);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 1.14rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .flow-card {
+      position: relative;
+      min-height: 190px;
+      padding-top: 58px;
+    }
+
+    .step-no {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--mist);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .flow-card strong {
+      display: block;
+      margin-top: 14px;
+      color: var(--ink);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(130px, 1fr));
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 4px;
+    }
+
+    .phase {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--green);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 160px;
+    }
+
+    .phase:nth-child(2n) { border-top-color: var(--teal); }
+    .phase:nth-child(3n) { border-top-color: var(--coral); }
+
+    .phase b {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .phase small {
+      display: block;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .tool-layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .tool-menu {
+      position: sticky;
+      top: 88px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fff;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .tab[aria-selected="true"] {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .field label {
+      font-weight: 800;
+      color: #2f4051;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      border: 1px solid #cbd8d3;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 12px;
+    }
+
+    .field textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .result-box {
+      border: 1px solid #c9ddd5;
+      border-radius: 8px;
+      background: #f4fbf8;
+      padding: 16px;
+      color: #1b4636;
+      min-height: 64px;
+      font-weight: 700;
+      white-space: pre-wrap;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .score-row {
+      display: grid;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    input[type="range"] {
+      accent-color: var(--green);
+    }
+
+    .score-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 16px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 16px;
+      font-weight: 900;
+    }
+
+    .score-total span:last-child {
+      font-size: 1.35rem;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist label {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .checklist input {
+      margin-top: 5px;
+      accent-color: var(--green);
+    }
+
+    .progress {
+      height: 10px;
+      border-radius: 999px;
+      background: #dce7e2;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--green), var(--yellow));
+      transition: width .25s ease;
+    }
+
+    .review-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 14px;
+    }
+
+    .review-summary {
+      display: grid;
+      gap: 4px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .review-summary strong {
+      color: var(--blue);
+      font-size: 1.1rem;
+    }
+
+    .review-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .review-card {
+      display: grid;
+      gap: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(23, 32, 42, .06);
+    }
+
+    .review-card-head {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 120px;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .review-no {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--mist);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .review-card h3 {
+      margin: 0 0 4px;
+      color: var(--blue);
+      line-height: 1.3;
+    }
+
+    .review-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .review-status {
+      width: 100%;
+      border: 1px solid #cbd8d3;
+      border-radius: 8px;
+      background: #fff;
+      padding: 8px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .review-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .review-meta div {
+      border-radius: 8px;
+      background: #f4f8f6;
+      border: 1px solid #dce8e3;
+      padding: 10px;
+    }
+
+    .review-meta b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--green);
+    }
+
+    .review-items {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .review-items label {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 8px;
+      align-items: start;
+      color: #263b50;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .review-items input {
+      margin-top: 5px;
+      accent-color: var(--green);
+    }
+
+    .review-note {
+      display: grid;
+      gap: 6px;
+    }
+
+    .review-note label {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .review-note textarea {
+      width: 100%;
+      min-height: 82px;
+      resize: vertical;
+      border: 1px solid #cbd8d3;
+      border-radius: 8px;
+      padding: 10px;
+      color: var(--ink);
+    }
+
+    .save-state {
+      min-height: 24px;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: .95rem;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--blue);
+      background: #edf6f2;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .quote {
+      border-left: 5px solid var(--yellow);
+      background: #fff9eb;
+      border-radius: 8px;
+      padding: 16px;
+      color: #5a4016;
+      font-weight: 700;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 10px;
+      padding-left: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .source-list a {
+      color: var(--teal);
+      overflow-wrap: anywhere;
+    }
+
+    .route-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .route-list li {
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr);
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 12px;
+    }
+
+    code, pre {
+      font-family: "Cascadia Mono", "Consolas", monospace;
+    }
+
+    code {
+      color: #0f5d69;
+      background: #eaf5f4;
+      border-radius: 6px;
+      padding: 2px 6px;
+    }
+
+    pre {
+      overflow-x: auto;
+      border-radius: 8px;
+      background: #101923;
+      color: #e8f4f1;
+      padding: 18px;
+      line-height: 1.55;
+    }
+
+    .deck-shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .deck-picker {
+      position: sticky;
+      top: 88px;
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .deck-picker label {
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    .deck-picker select {
+      width: 100%;
+      border: 1px solid #cbd8d3;
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .deck-progress-list {
+      display: grid;
+      gap: 6px;
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .deck-progress-list button {
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: transparent;
+      color: #33485c;
+      padding: 8px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .deck-progress-list button[aria-current="true"] {
+      border-color: #b8d6cc;
+      background: #eef8f4;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .deck-progress-list span:first-child {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: var(--mist);
+      font-weight: 900;
+    }
+
+    .slide-stage {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #102018;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .web-slide {
+      min-height: min(66vw, 660px);
+      aspect-ratio: 16 / 9;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 22px;
+      padding: clamp(22px, 4vw, 52px);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.96), rgba(246,250,248,.98)),
+        radial-gradient(circle at 92% 10%, rgba(242,184,75,.28), transparent 30%);
+    }
+
+    .web-slide-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+      border-bottom: 2px solid #dfe9e5;
+      padding-bottom: 16px;
+    }
+
+    .web-slide-kicker {
+      margin: 0 0 6px;
+      color: var(--green);
+      font-size: clamp(.9rem, 1.4vw, 1.05rem);
+      font-weight: 900;
+    }
+
+    .web-slide h3 {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(1.85rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .slide-count {
+      flex: 0 0 auto;
+      min-width: 78px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 8px 10px;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .web-slide-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .slide-main {
+      display: grid;
+      align-content: center;
+      gap: 14px;
+    }
+
+    .slide-main p {
+      margin: 0;
+      color: #2d4052;
+      font-size: clamp(1.08rem, 2vw, 1.45rem);
+      line-height: 1.72;
+      font-weight: 700;
+    }
+
+    .slide-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .slide-list li {
+      position: relative;
+      padding-left: 24px;
+      color: #23384d;
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      line-height: 1.58;
+    }
+
+    .slide-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .62em;
+      width: 9px;
+      height: 9px;
+      border-radius: 3px;
+      background: var(--yellow);
+    }
+
+    .slide-side {
+      display: grid;
+      grid-template-rows: auto auto minmax(0, 1fr);
+      gap: 12px;
+      border-left: 5px solid var(--green);
+      border-radius: 8px;
+      background: #f0f7f4;
+      padding: 22px;
+    }
+
+    .slide-side b {
+      color: var(--green);
+      font-size: 1.1rem;
+    }
+
+    .slide-side p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .slide-visual {
+      position: relative;
+      min-height: 220px;
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.45)),
+        repeating-linear-gradient(0deg, rgba(31,122,90,.08), rgba(31,122,90,.08) 1px, transparent 1px, transparent 28px),
+        repeating-linear-gradient(90deg, rgba(36,59,107,.07), rgba(36,59,107,.07) 1px, transparent 1px, transparent 28px);
+      border: 1px solid #cfe2da;
+    }
+
+    .visual-pill {
+      display: inline-grid;
+      place-items: center;
+      min-width: 44px;
+      min-height: 34px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid #cadbd5;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(23, 32, 42, .08);
+    }
+
+    .visual-cover {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+    }
+
+    .visual-cover .orbit {
+      position: relative;
+      width: 168px;
+      height: 168px;
+      border: 3px solid rgba(31,122,90,.28);
+      border-radius: 50%;
+    }
+
+    .visual-cover .orbit::before,
+    .visual-cover .orbit::after {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 2px solid rgba(36,59,107,.24);
+      border-radius: 50%;
+      transform: rotate(28deg);
+    }
+
+    .visual-cover .orbit::after {
+      inset: 58px;
+      background: var(--yellow);
+      border: 0;
+      box-shadow: 0 0 0 16px rgba(242,184,75,.18);
+    }
+
+    .visual-cover .dot {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--green);
+      border: 5px solid #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .visual-cover .dot:nth-child(1) { left: 8px; top: 36px; }
+    .visual-cover .dot:nth-child(2) { right: 6px; top: 68px; background: var(--teal); }
+    .visual-cover .dot:nth-child(3) { left: 72px; bottom: 4px; background: var(--coral); }
+
+    .visual-goals {
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      height: 100%;
+      padding: 22px;
+    }
+
+    .visual-goals .bar {
+      height: 20px;
+      border-radius: 999px;
+      background: #dce9e5;
+      overflow: hidden;
+    }
+
+    .visual-goals .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green), var(--yellow));
+    }
+
+    .visual-goals .bar:nth-child(1) span { width: 78%; }
+    .visual-goals .bar:nth-child(2) span { width: 62%; background: linear-gradient(90deg, var(--teal), var(--blue)); }
+    .visual-goals .bar:nth-child(3) span { width: 86%; background: linear-gradient(90deg, var(--coral), var(--yellow)); }
+
+    .visual-concept {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+    }
+
+    .visual-concept .node {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 86px;
+      height: 58px;
+      border-radius: 8px;
+      background: #fff;
+      border: 2px solid #c7dcd4;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .visual-concept .node.main {
+      width: 108px;
+      height: 72px;
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+      z-index: 2;
+    }
+
+    .visual-concept .node:nth-child(1) { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+    .visual-concept .node:nth-child(2) { left: 22px; top: 24px; }
+    .visual-concept .node:nth-child(3) { right: 22px; top: 32px; }
+    .visual-concept .node:nth-child(4) { left: 34px; bottom: 30px; }
+    .visual-concept .node:nth-child(5) { right: 36px; bottom: 26px; }
+
+    .visual-concept .line {
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      top: 50%;
+      height: 2px;
+      background: rgba(31,122,90,.35);
+    }
+
+    .visual-concept .line:nth-child(7) {
+      left: 50%;
+      right: auto;
+      top: 18%;
+      width: 2px;
+      height: 64%;
+    }
+
+    .visual-sequence {
+      display: grid;
+      align-content: center;
+      gap: 12px;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .visual-sequence .step {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .visual-sequence .step span:first-child {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .visual-sequence .track {
+      height: 10px;
+      border-radius: 999px;
+      background: #dce9e5;
+      overflow: hidden;
+    }
+
+    .visual-sequence .track span {
+      display: block;
+      height: 100%;
+      background: var(--yellow);
+      border-radius: inherit;
+    }
+
+    .visual-sequence .step:nth-child(1) .track span { width: 32%; }
+    .visual-sequence .step:nth-child(2) .track span { width: 52%; }
+    .visual-sequence .step:nth-child(3) .track span { width: 74%; }
+    .visual-sequence .step:nth-child(4) .track span { width: 94%; }
+
+    .visual-activity {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      height: 100%;
+      padding: 18px;
+    }
+
+    .visual-activity .tile {
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #cfddd8;
+      padding: 12px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .visual-activity .tile::before {
+      content: "";
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--mist);
+      border: 8px solid #fff;
+      box-shadow: inset 0 0 0 3px var(--green);
+    }
+
+    .visual-activity .tile:nth-child(2)::before { box-shadow: inset 0 0 0 3px var(--teal); }
+    .visual-activity .tile:nth-child(3)::before { box-shadow: inset 0 0 0 3px var(--yellow); }
+    .visual-activity .tile:nth-child(4)::before { box-shadow: inset 0 0 0 3px var(--coral); }
+
+    .visual-activity .tile span {
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    .visual-mistakes {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      padding: 20px;
+    }
+
+    .visual-mistakes .warning {
+      position: relative;
+      width: 180px;
+      height: 156px;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+      background: var(--yellow);
+      box-shadow: var(--shadow);
+    }
+
+    .visual-mistakes .warning::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 48px;
+      width: 16px;
+      height: 52px;
+      border-radius: 999px;
+      background: var(--blue);
+      transform: translateX(-50%);
+    }
+
+    .visual-mistakes .warning::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--blue);
+      transform: translateX(-50%);
+    }
+
+    .visual-checklist {
+      display: grid;
+      align-content: center;
+      gap: 12px;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .visual-checklist .check-row {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .visual-checklist .box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--green);
+      position: relative;
+    }
+
+    .visual-checklist .box::after {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 7px;
+      width: 12px;
+      height: 7px;
+      border-left: 3px solid #fff;
+      border-bottom: 3px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .visual-checklist .line {
+      height: 12px;
+      border-radius: 999px;
+      background: #cfded9;
+    }
+
+    .visual-output {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+    }
+
+    .visual-output .stack {
+      position: relative;
+      width: 190px;
+      height: 148px;
+    }
+
+    .visual-output .sheet {
+      position: absolute;
+      width: 150px;
+      height: 104px;
+      border-radius: 8px;
+      background: #fff;
+      border: 2px solid #cddbd6;
+      box-shadow: 0 10px 22px rgba(23,32,42,.12);
+    }
+
+    .visual-output .sheet:nth-child(1) { left: 0; top: 34px; transform: rotate(-7deg); }
+    .visual-output .sheet:nth-child(2) { left: 22px; top: 18px; transform: rotate(4deg); }
+    .visual-output .sheet:nth-child(3) { left: 42px; top: 0; border-top: 14px solid var(--green); }
+
+    .visual-next {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      padding: 20px;
+    }
+
+    .visual-next .bridge {
+      position: relative;
+      width: 220px;
+      height: 120px;
+      border-bottom: 18px solid var(--blue);
+      border-radius: 0 0 110px 110px;
+    }
+
+    .visual-next .bridge::before,
+    .visual-next .bridge::after {
+      content: "";
+      position: absolute;
+      bottom: -42px;
+      width: 44px;
+      height: 54px;
+      border-radius: 8px 8px 0 0;
+      background: var(--green);
+    }
+
+    .visual-next .bridge::before { left: 18px; }
+    .visual-next .bridge::after { right: 18px; background: var(--teal); }
+
+    .visual-next .arrow {
+      position: absolute;
+      top: 28px;
+      left: 46px;
+      width: 130px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--yellow);
+    }
+
+    .visual-next .arrow::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -9px;
+      border-left: 22px solid var(--yellow);
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+    }
+
+    .css-scene {
+      isolation: isolate;
+      min-height: 260px;
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 12px;
+      background:
+        radial-gradient(circle at var(--cx, 78%) var(--cy, 18%), hsl(var(--hue, 155) 74% 88% / .95), transparent 33%),
+        radial-gradient(circle at 12% 92%, hsl(var(--hue2, 204) 68% 88% / .72), transparent 34%),
+        linear-gradient(135deg, #ffffff, hsl(var(--hue, 155) 42% 96%));
+    }
+
+    .css-scene::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .42;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 25px, rgba(36,59,107,.11) 25px 26px),
+        repeating-linear-gradient(90deg, transparent 0 25px, rgba(31,122,90,.10) 25px 26px);
+      mask-image: linear-gradient(135deg, transparent, #000 18%, #000 74%, transparent);
+    }
+
+    .scene-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--blue);
+      font-size: .95rem;
+      font-weight: 900;
+    }
+
+    .scene-number {
+      width: 36px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #fff;
+      background: hsl(var(--hue, 155) 58% 34%);
+    }
+
+    .scene-canvas {
+      position: relative;
+      min-height: 176px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(36,59,107,.12);
+      overflow: hidden;
+    }
+
+    .scene-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .scene-labels span {
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(36,59,107,.16);
+      color: #31465c;
+      padding: 3px 8px;
+      font-size: .8rem;
+      font-weight: 900;
+    }
+
+    .scene-object,
+    .scene-object::before,
+    .scene-object::after {
+      position: absolute;
+      display: block;
+      content: "";
+    }
+
+    .scene-card {
+      position: absolute;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid rgba(36,59,107,.15);
+      box-shadow: 0 10px 24px rgba(23,32,42,.10);
+    }
+
+    .scene-card::before {
+      content: "";
+      display: block;
+      height: 10px;
+      border-radius: 8px 8px 0 0;
+      background: hsl(var(--hue, 155) 58% 42%);
+    }
+
+    .scene-card::after {
+      content: "";
+      display: block;
+      width: 64%;
+      height: 8px;
+      margin: 14px;
+      border-radius: 999px;
+      background: #d7e4df;
+      box-shadow: 0 18px 0 #e8efec, 0 36px 0 #e8efec;
+    }
+
+    .scene-node {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: #fff;
+      border: 2px solid hsl(var(--hue, 155) 46% 45%);
+      color: var(--blue);
+      font-size: .85rem;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(23,32,42,.09);
+    }
+
+    .scene-line {
+      position: absolute;
+      height: 4px;
+      border-radius: 999px;
+      background: hsl(var(--hue2, 204) 56% 48%);
+      transform-origin: left center;
+    }
+
+    .scene-dot {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--yellow);
+      border: 4px solid #fff;
+      box-shadow: 0 5px 12px rgba(23,32,42,.12);
+    }
+
+    .scene-chart .bar {
+      position: absolute;
+      bottom: 28px;
+      width: 26px;
+      border-radius: 7px 7px 0 0;
+      background: hsl(var(--hue, 155) 58% 42%);
+    }
+
+    .scene-chart .axis {
+      position: absolute;
+      left: 30px;
+      right: 22px;
+      bottom: 28px;
+      height: 3px;
+      background: var(--blue);
+    }
+
+    .scene-chart .axis::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 3px;
+      height: 116px;
+      background: var(--blue);
+    }
+
+    .scene-lab .tube {
+      position: absolute;
+      bottom: 26px;
+      width: 26px;
+      height: 116px;
+      border: 3px solid rgba(36,59,107,.45);
+      border-top: 0;
+      border-radius: 0 0 15px 15px;
+      background: linear-gradient(to top, hsl(var(--hue, 155) 72% 70%) 0 48%, transparent 48%);
+    }
+
+    .scene-lab .tube::before {
+      content: "";
+      position: absolute;
+      left: -7px;
+      right: -7px;
+      top: -7px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(36,59,107,.35);
+    }
+
+    .scene-plant .stem {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      width: 7px;
+      height: 118px;
+      border-radius: 999px;
+      background: var(--green);
+      transform: rotate(var(--tilt, -8deg));
+    }
+
+    .scene-plant .leaf {
+      position: absolute;
+      width: 52px;
+      height: 28px;
+      border-radius: 52px 0;
+      background: hsl(var(--hue, 155) 56% 45%);
+      transform: rotate(var(--rot, -20deg));
+    }
+
+    .scene-stage .podium {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      width: 102px;
+      height: 82px;
+      border-radius: 8px 8px 0 0;
+      transform: translateX(-50%);
+      background: var(--blue);
+    }
+
+    .scene-stage .screen {
+      position: absolute;
+      left: 28px;
+      top: 24px;
+      width: 122px;
+      height: 72px;
+      border-radius: 8px;
+      background: #fff;
+      border: 2px solid #c9d8d2;
+    }
+
+    .scene-stage .screen::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: 22px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--yellow);
+      box-shadow: 0 18px 0 hsl(var(--hue, 155) 56% 45%);
+    }
+
+    .scene-board .pin {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 5px rgba(217,107,85,.18);
+    }
+
+    .scene-board .note {
+      position: absolute;
+      width: 72px;
+      height: 58px;
+      border-radius: 7px;
+      background: #fff6d9;
+      box-shadow: 0 7px 18px rgba(23,32,42,.10);
+      transform: rotate(var(--rot, -4deg));
+    }
+
+    .web-slide-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .deck-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px;
+      background: #fff;
+      border-top: 1px solid var(--line);
+    }
+
+    .deck-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .deck-button {
+      min-height: 40px;
+      border: 1px solid #cbd8d3;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--blue);
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 900;
+    }
+
+    .deck-button:hover {
+      background: var(--mist);
+    }
+
+    .deck-button.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .slide-hint {
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .slide-stage:fullscreen {
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 0;
+      background: #0c141c;
+      padding: 28px;
+    }
+
+    .slide-stage:fullscreen .web-slide {
+      width: min(96vw, 1360px);
+      min-height: 0;
+    }
+
+    .footer {
+      background: #101923;
+      color: #dce8e5;
+      padding: 34px 0;
+    }
+
+    .footer p {
+      margin: 0;
+      color: #b8c8c3;
+    }
+
+    @media (max-width: 980px) {
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .review-grid { grid-template-columns: 1fr; }
+      .tool-layout { grid-template-columns: 1fr; }
+      .deck-shell { grid-template-columns: 1fr; }
+      .deck-picker { position: static; }
+      .web-slide-body { grid-template-columns: 1fr; }
+      .tool-menu { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-head { grid-template-columns: 1fr; }
+      .route-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        min-height: 92vh;
+        background:
+          linear-gradient(180deg, rgba(10, 21, 31, .86) 0%, rgba(10, 21, 31, .70) 52%, rgba(10, 21, 31, .38) 100%),
+          url("assets/science-fair-workspace.png") center / cover no-repeat;
+      }
+
+      .hero-inner {
+        width: min(100% - 28px, 1120px);
+        padding-top: 44px;
+      }
+
+      .nav {
+        align-items: start;
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .grid-2, .grid-3, .grid-4, .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-menu {
+        grid-template-columns: 1fr;
+      }
+
+      .route-list li {
+        grid-template-columns: 1fr;
+      }
+
+      .review-card-head,
+      .review-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .web-slide {
+        aspect-ratio: auto;
+        min-height: 620px;
+      }
+
+      .web-slide-head,
+      .web-slide-foot,
+      .deck-controls {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <span class="eyebrow">科展指導教學網站 · 版本日期 2026-06-27</span>
+      <h1>從題目發想到複試口頭報告的完整科展流程</h1>
+      <p>把「科展」拆成可以教、可以練、可以檢核、可以產出作品書與口頭報告的學習流程，適合國小高年級至國中教師、學生社團與校內培訓使用。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#map">開始看學習地圖</a>
+        <a class="btn btn-ghost" href="#tools">使用互動工具</a>
+      </div>
+      <ul class="meta-list" aria-label="網站定位">
+        <li>題目訂定</li>
+        <li>文獻探討</li>
+        <li>實驗設計</li>
+        <li>資料分析</li>
+        <li>作品書</li>
+        <li>口頭報告</li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="topbar" aria-label="主要導覽">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="回到頁首">
+        <span class="brand-mark">科</span>
+        <span>科展指導站</span>
+      </a>
+      <div class="nav-links">
+        <a href="#source">來源判讀</a>
+        <a href="#map">學習地圖</a>
+        <a href="#chapters">八大流程</a>
+        <a href="#slide-decks">流程簡報</a>
+        <a href="#tools">互動工具</a>
+        <a href="#report">作品與口試</a>
+        <a href="#check">章節檢核</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="band" id="source">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>資料搜集摘要與來源判讀</h2>
+            <p>這份網站內容以臺灣官方科展規範為核心，再用 Science Buddies 的教學化流程補強學習任務、檢核表與練習設計。</p>
+          </div>
+          <span class="tag">官方規範優先</span>
+        </div>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>臺灣官方科展規範</h3>
+            <p>以教育部與國立臺灣科學教育館的中小學科學展覽會實施要點、安全規則、優勝作品與評審標準為依據，重視研究倫理、學生親作、作品規格、說明書限制與評審方式。</p>
+          </article>
+          <article class="card">
+            <h3>國際學習流程補強</h3>
+            <p>以 Science Buddies 的科學方法、文獻研究、作品書、結論、展示板與評審口說資料作為教學流程參考，轉化成任務、提示、範例與練習題。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-alt" id="map">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>科展學習地圖</h2>
+            <p>從探索到發表，學生需要留下可追溯的歷程；教師則在每一階段協助聚焦、檢核、修正與確認研究品質。</p>
+          </div>
+        </div>
+        <div class="timeline" aria-label="科展學習流程">
+          <div class="phase"><b>探索期</b><small>觀察生活現象，提出好奇問題。教師把好奇改寫成可測量問題。</small></div>
+          <div class="phase"><b>定題期</b><small>聚焦研究對象、變因與測量方式，確認題目清楚且可檢驗。</small></div>
+          <div class="phase"><b>文獻期</b><small>查找歷屆作品與相關概念，找出前人方法與研究缺口。</small></div>
+          <div class="phase"><b>設計期</b><small>規劃假設、變因、控制條件、材料、步驟與安全倫理。</small></div>
+          <div class="phase"><b>實作期</b><small>記錄研究日誌、原始資料、照片與異常狀況，確保可重做。</small></div>
+          <div class="phase"><b>分析期</b><small>整理表格與圖表，判讀平均、差異、趨勢與限制。</small></div>
+          <div class="phase"><b>寫作期</b><small>完成摘要、動機、方法、結果、討論、結論與引用。</small></div>
+          <div class="phase"><b>發表期</b><small>製作說明板，練習 2-5 分鐘報告與評審答詢。</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="chapters">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>八大教學流程</h2>
+            <p>每張流程卡都對應原始文件中的章節：目標、常見錯誤、可操作產出與網站互動設計。</p>
+          </div>
+        </div>
+        <div class="grid grid-4">
+          <article class="card flow-card">
+            <span class="step-no">1</span>
+            <h3>科展題目的訂定</h3>
+            <p>題目不是作文標題，而是研究問題的濃縮。需要清楚聚焦、可測量、可重複、可由學生親作，並避免與歷屆作品過度相似。</p>
+            <strong>產出：題目、研究問題、變因草稿</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">2</span>
+            <h3>文獻探討</h3>
+            <p>文獻不是貼資料，而是回答已知內容、既有方法與可改進缺口。至少整理來源、作者、年份、方法、發現與可參考處。</p>
+            <strong>產出：摘要卡、比較表、研究缺口</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">3</span>
+            <h3>引起動機</h3>
+            <p>用「觀察、疑問、文獻缺口、研究目的」四段式，避免只有心得或空泛宣稱重要。</p>
+            <strong>產出：150-250 字研究動機</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">4</span>
+            <h3>實驗研究設計</h3>
+            <p>把研究問題變成可執行程序：自變因、依變因、控制變因、對照組、重複次數、材料設備、安全與倫理。</p>
+            <strong>產出：實驗設計表、安全評估</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">5</span>
+            <h3>資料收集及分析</h3>
+            <p>保留原始資料，追溯日期、組別、條件與測量方式。圖表必須有標題、座標軸、單位與一句話結論。</p>
+            <strong>產出：原始資料、圖表、判讀</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">6</span>
+            <h3>討論以及結論</h3>
+            <p>討論回答為什麼，結論回答發現什麼。每一句結論都應對應表格、圖表或觀察紀錄。</p>
+            <strong>產出：討論段落、3-6 點結論</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">7</span>
+            <h3>製作科展作品書</h3>
+            <p>臺灣科展作品書重視精簡、完整、可查核。摘要 300 字以內，並完整呈現文獻、方法、結果、討論、結論與參考資料。</p>
+            <strong>產出：完整作品說明書</strong>
+          </article>
+          <article class="card flow-card">
+            <span class="step-no">8</span>
+            <h3>複試口頭報告</h3>
+            <p>複試不是背稿，而是確認學生理解研究、親自參與、能解釋數據、限制與未來修正方向。</p>
+            <strong>產出：2-5 分鐘講稿、答詢題庫</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-alt" id="slide-decks">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>八大流程網頁簡報</h2>
+            <p>每一個流程各 9 頁，適合直接在網站內投影授課。可用流程選單切換章節，或用上一頁、下一頁與鍵盤左右鍵播放。</p>
+          </div>
+          <span class="tag">8 組 × 9 頁</span>
+        </div>
+        <div class="deck-shell">
+          <aside class="deck-picker" aria-label="簡報章節選擇">
+            <label for="deck-select">選擇教學流程</label>
+            <select id="deck-select"></select>
+            <ul class="deck-progress-list" id="deck-progress-list" aria-label="本流程投影片"></ul>
+          </aside>
+          <div class="slide-stage" id="slide-stage">
+            <article class="web-slide" id="web-slide" aria-live="polite"></article>
+            <div class="deck-controls">
+              <div class="deck-buttons">
+                <button class="deck-button" type="button" id="prev-slide">上一頁</button>
+                <button class="deck-button primary" type="button" id="next-slide">下一頁</button>
+                <button class="deck-button" type="button" id="fullscreen-slide">全螢幕</button>
+              </div>
+              <span class="slide-hint">提示：鍵盤 ← → 可翻頁，Esc 可離開全螢幕。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band-alt" id="tools">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>互動工具原型</h2>
+            <p>這一版先把原始文章中的「題目產生器、評分雷達、動機改寫、口試模擬、檢核表」做成前端可操作原型。</p>
+          </div>
+        </div>
+        <div class="tool-layout">
+          <div class="tool-menu" role="tablist" aria-label="互動工具">
+            <button class="tab" role="tab" aria-selected="true" data-panel="topic-tool">題目句型</button>
+            <button class="tab" role="tab" aria-selected="false" data-panel="score-tool">題目評分</button>
+            <button class="tab" role="tab" aria-selected="false" data-panel="motivation-tool">動機草稿</button>
+            <button class="tab" role="tab" aria-selected="false" data-panel="oral-tool">口試抽題</button>
+          </div>
+          <div>
+            <article class="panel active" id="topic-tool">
+              <div class="card">
+                <h3>題目句型產生器</h3>
+                <p>輸入研究對象與變因，快速得到可改寫的題目句型。</p>
+                <div class="grid grid-2" style="margin-top:16px">
+                  <div class="field">
+                    <label for="topic-type">題目類型</label>
+                    <select id="topic-type">
+                      <option value="比較型">比較型：不同自變因對依變因的影響</option>
+                      <option value="條件型">條件型：在控制條件下的影響</option>
+                      <option value="改良型">改良型：改變材料／構造／程序</option>
+                      <option value="模型型">模型型：利用模型探討自然現象</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="subject">研究對象</label>
+                    <input id="subject" placeholder="例：校園昆蟲旅館中的獨居蜂">
+                  </div>
+                  <div class="field">
+                    <label for="independent">自變因</label>
+                    <input id="independent" placeholder="例：竹管內徑">
+                  </div>
+                  <div class="field">
+                    <label for="dependent">依變因或功能指標</label>
+                    <input id="dependent" placeholder="例：入住孔洞比例">
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="button" id="build-topic">產生題目</button>
+                <div class="result-box" id="topic-output" style="margin-top:14px">請填入欄位後產生題目。</div>
+              </div>
+            </article>
+
+            <article class="panel" id="score-tool">
+              <div class="card">
+                <h3>題目可行性評分</h3>
+                <p>原文建議用 1-5 分檢核題目。低於 18 分建議回到題目改寫。</p>
+                <div class="score-grid" id="score-grid" style="margin-top:16px"></div>
+                <div class="score-total"><span id="score-message">請調整各項分數</span><span id="score-total">0 / 30</span></div>
+              </div>
+            </article>
+
+            <article class="panel" id="motivation-tool">
+              <div class="card">
+                <h3>動機四段式草稿</h3>
+                <p>依照「觀察 - 疑問 - 文獻缺口 - 研究目的」組成研究動機。</p>
+                <div class="field" style="margin-top:16px">
+                  <label for="observe">觀察</label>
+                  <textarea id="observe" placeholder="我們在生活或課程中看到什麼現象？"></textarea>
+                </div>
+                <div class="field">
+                  <label for="question">疑問</label>
+                  <textarea id="question" placeholder="這個現象有哪些不確定之處？"></textarea>
+                </div>
+                <div class="field">
+                  <label for="gap">文獻缺口</label>
+                  <textarea id="gap" placeholder="查資料後發現哪些部分還沒有被充分比較或量化？"></textarea>
+                </div>
+                <div class="field">
+                  <label for="purpose">研究目的</label>
+                  <textarea id="purpose" placeholder="本研究要透過什麼方法回答什麼問題？"></textarea>
+                </div>
+                <button class="btn btn-primary" type="button" id="build-motivation">組成草稿</button>
+                <div class="result-box" id="motivation-output" style="margin-top:14px">草稿會顯示在這裡。</div>
+              </div>
+            </article>
+
+            <article class="panel" id="oral-tool">
+              <div class="card">
+                <h3>口試模擬抽題</h3>
+                <p>每題回答時檢查四件事：是否回答問題、是否引用數據、是否解釋原理、是否承認限制。</p>
+                <button class="btn btn-primary" type="button" id="draw-question">抽一題</button>
+                <div class="result-box" id="oral-output" style="margin-top:14px">按下按鈕開始練習。</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="report">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>作品書與口頭報告</h2>
+            <p>原文將作品書寫作與複試報告視為最後整合：用研究歷程證明學生理解、能說明、能回應限制。</p>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>作品書建議章節</h3>
+            <p>摘要、研究動機、研究目的、文獻探討、研究設備與器材、研究過程與方法、研究結果、討論、結論、參考文獻與附錄。摘要建議最後寫，控制在 300 字以內，避免放表格、圖或參考文獻。</p>
+          </article>
+          <article class="card">
+            <h3>2-5 分鐘報告順序</h3>
+            <p>一句話題目、動機、問題與假設、方法、主要結果、討論與限制、結論與未來。評審可能中途提問，因此學生要能用數據與研究日誌回應。</p>
+          </article>
+        </div>
+        <div class="quote" style="margin-top:16px">每一句結論都必須連回一張表、一張圖或一筆觀察紀錄；沒有資料來源的句子只能是推測，不能放進結論。</div>
+      </div>
+    </section>
+
+    <section class="band" id="check">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>章節檢核總表</h2>
+            <p>把章節檢核做成可操作的教師審閱工具。勾選檢核項目、設定狀態並填寫備註後，可以儲存在目前瀏覽器中，重新整理後仍會保留。</p>
+          </div>
+        </div>
+        <div class="review-toolbar">
+          <div class="review-summary">
+            <strong id="review-score">尚未檢核</strong>
+            <span id="review-saved-at">尚未儲存</span>
+          </div>
+          <div class="review-actions">
+            <button class="deck-button primary" type="button" id="save-review">儲存檢核</button>
+            <button class="deck-button" type="button" id="load-review">載入紀錄</button>
+            <button class="deck-button" type="button" id="clear-review">清除紀錄</button>
+          </div>
+        </div>
+        <div class="progress" aria-label="章節檢核完成度"><span id="review-progress"></span></div>
+        <div class="save-state" id="review-message" role="status" aria-live="polite"></div>
+        <div class="review-grid" id="review-grid" aria-label="章節檢核卡片"></div>
+      </div>
+    </section>
+
+    <section class="band-alt" id="references">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>參考資料</h2>
+            <p>保留原始文件列出的官方與教學來源，供後續正式網站建立外部連結與引用格式。</p>
+          </div>
+        </div>
+        <ol class="source-list">
+          <li>[1] 教育部主管法規共用系統：中華民國中小學科學展覽會實施要點。<a href="https://edu.law.moe.gov.tw/LawContent.aspx?id=FL023729">https://edu.law.moe.gov.tw/LawContent.aspx?id=FL023729</a></li>
+          <li>[2] 國立臺灣科學教育館科展資訊管理系統：全國中小學科學展覽會實施要點。<a href="https://twsf.ntsec.gov.tw/Article.aspx?a=38&amp;lang=1">https://twsf.ntsec.gov.tw/Article.aspx?a=38&amp;lang=1</a></li>
+          <li>[3] 國立臺灣科學教育館科展資訊管理系統：全國中小學科學展覽會安全規則。<a href="https://twsf.ntsec.gov.tw/Article.aspx?a=39&amp;lang=1">https://twsf.ntsec.gov.tw/Article.aspx?a=39&amp;lang=1</a></li>
+          <li>[4] 國立臺灣科學教育館科展資訊管理系統：歷屆優勝作品。<a href="https://twsf.ntsec.gov.tw/Article.aspx?a=41&amp;lang=1">https://twsf.ntsec.gov.tw/Article.aspx?a=41&amp;lang=1</a></li>
+          <li>[5] 國立臺灣科學教育館科展資訊管理系統：臺灣國際科學展覽會實施要點與評審標準。<a href="https://twsf.ntsec.gov.tw/Article.aspx?a=32&amp;lang=1">https://twsf.ntsec.gov.tw/Article.aspx?a=32&amp;lang=1</a></li>
+          <li>[6] Science Buddies: Steps of the Scientific Method。<a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/steps-of-the-scientific-method">https://www.sciencebuddies.org/science-fair-projects/science-fair/steps-of-the-scientific-method</a></li>
+          <li>[7] Science Buddies: Writing a Research Paper for Your Science Fair Project。<a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/writing-a-research-paper-for-your-science-fair-project">https://www.sciencebuddies.org/science-fair-projects/science-fair/writing-a-research-paper-for-your-science-fair-project</a></li>
+          <li>[8] Science Buddies: Science Fair Project Final Report。<a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/science-fair-project-final-report">https://www.sciencebuddies.org/science-fair-projects/science-fair/science-fair-project-final-report</a></li>
+          <li>[9] Science Buddies: Preparing Conclusions for Your Science Fair Project。<a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/writing-conclusions">https://www.sciencebuddies.org/science-fair-projects/science-fair/writing-conclusions</a></li>
+          <li>[10] Science Buddies: Science Fair Project Display Board Guide。<a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/science-fair-project-display-boards">https://www.sciencebuddies.org/science-fair-projects/science-fair/science-fair-project-display-boards</a></li>
+          <li>[11] Science Buddies: Judging - Tips to Prepare for Your Science Fair。<a href="https://www.sciencebuddies.org/science-fair-projects/science-fair/judging-tips-to-prepare-science-fair">https://www.sciencebuddies.org/science-fair-projects/science-fair/judging-tips-to-prepare-science-fair</a></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>科展指導教學網站原型。內容依據同資料夾 Word 文件整理，並修正原 HTML 轉檔亂碼問題。</p>
+    </div>
+  </footer>
+
+  <script src="assets/science-fair-slide-decks.js"></script>
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".panel");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((item) => item.setAttribute("aria-selected", "false"));
+        panels.forEach((panel) => panel.classList.remove("active"));
+        tab.setAttribute("aria-selected", "true");
+        document.getElementById(tab.dataset.panel).classList.add("active");
+      });
+    });
+
+    const topicType = document.getElementById("topic-type");
+    const subject = document.getElementById("subject");
+    const independent = document.getElementById("independent");
+    const dependent = document.getElementById("dependent");
+    const topicOutput = document.getElementById("topic-output");
+
+    document.getElementById("build-topic").addEventListener("click", () => {
+      const type = topicType.value;
+      const s = subject.value.trim() || "研究對象";
+      const x = independent.value.trim() || "自變因";
+      const y = dependent.value.trim() || "依變因";
+      const templates = {
+        "比較型": `不同${x}對${s}之${y}的影響`,
+        "條件型": `在固定控制條件下，${x}如何影響${s}的${y}`,
+        "改良型": `改變${s}的${x}是否能提升${y}`,
+        "模型型": `利用${s}探討${x}與${y}之間的變化規律`
+      };
+      topicOutput.textContent = templates[type] + "\n\n下一步：檢查是否可測量、可重複、安全，並查找歷屆作品是否過度相似。";
+    });
+
+    const scoreItems = ["可測量性", "可行性", "創新性", "生活連結", "安全性", "資料可分析性"];
+    const scoreGrid = document.getElementById("score-grid");
+    const scoreTotal = document.getElementById("score-total");
+    const scoreMessage = document.getElementById("score-message");
+
+    scoreItems.forEach((name, index) => {
+      const row = document.createElement("label");
+      row.className = "score-row";
+      row.innerHTML = `<span>${name}：<b id="score-label-${index}">3</b> 分</span><input type="range" min="1" max="5" value="3" aria-label="${name}分數" data-score="${index}">`;
+      scoreGrid.appendChild(row);
+    });
+
+    function updateScore() {
+      const sliders = document.querySelectorAll("[data-score]");
+      let total = 0;
+      sliders.forEach((slider) => {
+        const value = Number(slider.value);
+        total += value;
+        document.getElementById(`score-label-${slider.dataset.score}`).textContent = value;
+      });
+      scoreTotal.textContent = `${total} / 30`;
+      scoreMessage.textContent = total >= 24 ? "題目狀態良好，可進入文獻探討" : total >= 18 ? "可行但仍需修正低分項目" : "建議回到題目改寫";
+    }
+
+    document.querySelectorAll("[data-score]").forEach((slider) => slider.addEventListener("input", updateScore));
+    updateScore();
+
+    document.getElementById("build-motivation").addEventListener("click", () => {
+      const values = ["observe", "question", "gap", "purpose"].map((id) => document.getElementById(id).value.trim());
+      const [observe, question, gap, purpose] = values;
+      document.getElementById("motivation-output").textContent =
+        `我們觀察到：${observe || "（請補上生活或課堂中的現象）"}\n\n因此產生疑問：${question || "（請補上不確定之處）"}\n\n查找資料後發現：${gap || "（請補上文獻缺口）"}\n\n所以本研究目的為：${purpose || "（請補上本研究要回答的問題與方法）"}`;
+    });
+
+    const oralQuestions = [
+      "你們的題目是怎麼來的？",
+      "你們查了哪些資料？跟歷屆作品有什麼不同？",
+      "自變因、依變因、控制變因分別是什麼？",
+      "為什麼重複這麼多次？樣本數夠嗎？",
+      "這張圖表代表什麼？",
+      "哪一筆資料最關鍵？有沒有異常值？",
+      "如果結果不符合假設，你們怎麼解釋？",
+      "你們遇到什麼困難？怎麼修正？",
+      "哪些部分是學生自己完成？老師或家長協助了什麼？",
+      "未來如果繼續研究，你們會先改哪一個地方？"
+    ];
+
+    document.getElementById("draw-question").addEventListener("click", () => {
+      const question = oralQuestions[Math.floor(Math.random() * oralQuestions.length)];
+      document.getElementById("oral-output").textContent = `${question}\n\n回答提醒：先正面回答，再引用一筆數據或圖表，接著說明原理，最後補充限制或下一步。`;
+    });
+
+    const reviewItems = [
+      {
+        id: "topic",
+        title: "科展題目",
+        output: "題目、研究問題、變因草稿",
+        standard: "題目具體、可測量、可重複、安全",
+        checks: ["研究對象具體清楚", "自變因與依變因可辨識", "能安排重複測量且符合安全倫理"]
+      },
+      {
+        id: "literature",
+        title: "文獻探討",
+        output: "至少 3-5 筆摘要卡與比較表",
+        standard: "能指出前人方法、結果與本研究差異",
+        checks: ["來源可信且可追溯", "摘要卡含作者、年份、方法與發現", "比較表能指出研究缺口"]
+      },
+      {
+        id: "motivation",
+        title: "引起動機",
+        output: "150-250 字動機段落",
+        standard: "包含觀察、疑問、缺口、目的",
+        checks: ["有具體生活或課堂觀察", "能連結文獻缺口", "研究目的可接到後續實驗設計"]
+      },
+      {
+        id: "design",
+        title: "實驗設計",
+        output: "實驗設計表與安全評估",
+        standard: "自變因、依變因、控制變因清楚",
+        checks: ["三種變因清楚", "有對照組與重複次數", "材料、步驟、安全與倫理可檢核"]
+      },
+      {
+        id: "data",
+        title: "資料分析",
+        output: "原始資料、圖表、文字判讀",
+        standard: "圖表完整，判讀不超過資料支持範圍",
+        checks: ["保留原始資料且可追溯", "圖表有標題、座標軸與單位", "文字判讀有對應資料來源"]
+      },
+      {
+        id: "discussion",
+        title: "討論結論",
+        output: "討論段落與條列結論",
+        standard: "結論對應研究目的與資料",
+        checks: ["主要發現有數據支持", "討論能連結原理或文獻", "限制與未來改進具體可行"]
+      },
+      {
+        id: "report",
+        title: "作品書",
+        output: "完整作品說明書",
+        standard: "摘要、文獻、方法、結果、討論、結論、參考文獻完整",
+        checks: ["摘要 300 字以內且含四要素", "方法與結果可查核", "圖表編號、引用與參考文獻完整"]
+      },
+      {
+        id: "oral",
+        title: "口頭報告",
+        output: "2-5 分鐘講稿與答詢題庫",
+        standard: "能講原理、數據、限制與未來研究",
+        checks: ["短講結構清楚且符合時間", "能用圖表或數據回答問題", "能說明學生親作部分與研究限制"]
+      }
+    ];
+
+    const reviewKey = "scienceFairGuide.chapterReview.v1";
+    const reviewGrid = document.getElementById("review-grid");
+    const reviewProgress = document.getElementById("review-progress");
+    const reviewScore = document.getElementById("review-score");
+    const reviewSavedAt = document.getElementById("review-saved-at");
+    const reviewMessage = document.getElementById("review-message");
+
+    function defaultReviewState() {
+      return Object.fromEntries(reviewItems.map((item) => [
+        item.id,
+        { status: "待檢核", checks: item.checks.map(() => false), note: "" }
+      ]));
+    }
+
+    let reviewState = defaultReviewState();
+
+    function renderReviewCards() {
+      reviewGrid.innerHTML = reviewItems.map((item, index) => {
+        const current = reviewState[item.id];
+        return `
+          <article class="review-card" data-review-card="${item.id}">
+            <div class="review-card-head">
+              <span class="review-no">${index + 1}</span>
+              <div>
+                <h3>${item.title}</h3>
+                <p>${item.standard}</p>
+              </div>
+              <select class="review-status" data-review-status="${item.id}" aria-label="${item.title}狀態">
+                ${["待檢核", "待修正", "需老師確認", "通過"].map((status) => `<option value="${status}" ${current.status === status ? "selected" : ""}>${status}</option>`).join("")}
+              </select>
+            </div>
+            <div class="review-meta">
+              <div><b>必備產出</b><span>${item.output}</span></div>
+              <div><b>通過標準</b><span>${item.standard}</span></div>
+            </div>
+            <ul class="review-items">
+              ${item.checks.map((check, checkIndex) => `
+                <li>
+                  <label>
+                    <input type="checkbox" data-review-check="${item.id}" data-check-index="${checkIndex}" ${current.checks[checkIndex] ? "checked" : ""}>
+                    <span>${check}</span>
+                  </label>
+                </li>
+              `).join("")}
+            </ul>
+            <div class="review-note">
+              <label for="review-note-${item.id}">教師備註</label>
+              <textarea id="review-note-${item.id}" data-review-note="${item.id}" placeholder="可記錄需補資料、下一步修正或已通過理由">${current.note}</textarea>
+            </div>
+          </article>
+        `;
+      }).join("");
+      bindReviewInputs();
+      updateReviewProgress();
+    }
+
+    function bindReviewInputs() {
+      document.querySelectorAll("[data-review-status]").forEach((select) => {
+        select.addEventListener("change", () => {
+          reviewState[select.dataset.reviewStatus].status = select.value;
+          updateReviewProgress();
+        });
+      });
+      document.querySelectorAll("[data-review-check]").forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+          const id = checkbox.dataset.reviewCheck;
+          const index = Number(checkbox.dataset.checkIndex);
+          reviewState[id].checks[index] = checkbox.checked;
+          updateReviewProgress();
+        });
+      });
+      document.querySelectorAll("[data-review-note]").forEach((textarea) => {
+        textarea.addEventListener("input", () => {
+          reviewState[textarea.dataset.reviewNote].note = textarea.value;
+        });
+      });
+    }
+
+    function updateReviewProgress() {
+      const totalChecks = reviewItems.reduce((sum, item) => sum + item.checks.length, 0);
+      const checked = Object.values(reviewState).reduce((sum, item) => sum + item.checks.filter(Boolean).length, 0);
+      const passed = Object.values(reviewState).filter((item) => item.status === "通過").length;
+      const percent = totalChecks ? Math.round((checked / totalChecks) * 100) : 0;
+      reviewProgress.style.width = `${percent}%`;
+      reviewScore.textContent = `完成 ${checked} / ${totalChecks} 項，通過 ${passed} / ${reviewItems.length} 章`;
+    }
+
+    function saveReview() {
+      const payload = { savedAt: new Date().toISOString(), state: reviewState };
+      localStorage.setItem(reviewKey, JSON.stringify(payload));
+      const savedText = new Date(payload.savedAt).toLocaleString("zh-TW");
+      reviewSavedAt.textContent = `已儲存：${savedText}`;
+      reviewMessage.textContent = "檢核紀錄已儲存在此瀏覽器。";
+    }
+
+    function loadReview(showMessage = true) {
+      const raw = localStorage.getItem(reviewKey);
+      if (!raw) {
+        if (showMessage) reviewMessage.textContent = "目前沒有已儲存的檢核紀錄。";
+        return;
+      }
+      try {
+        const payload = JSON.parse(raw);
+        reviewState = { ...defaultReviewState(), ...(payload.state || {}) };
+        renderReviewCards();
+        reviewSavedAt.textContent = payload.savedAt ? `已載入：${new Date(payload.savedAt).toLocaleString("zh-TW")}` : "已載入紀錄";
+        if (showMessage) reviewMessage.textContent = "已載入已儲存的檢核紀錄。";
+      } catch (error) {
+        reviewMessage.textContent = "檢核紀錄讀取失敗，請清除後重新儲存。";
+      }
+    }
+
+    function clearReview() {
+      if (!confirm("確定要清除已儲存的章節檢核紀錄嗎？")) return;
+      localStorage.removeItem(reviewKey);
+      reviewState = defaultReviewState();
+      renderReviewCards();
+      reviewSavedAt.textContent = "尚未儲存";
+      reviewMessage.textContent = "已清除檢核紀錄。";
+    }
+
+    document.getElementById("save-review").addEventListener("click", saveReview);
+    document.getElementById("load-review").addEventListener("click", () => loadReview(true));
+    document.getElementById("clear-review").addEventListener("click", clearReview);
+    renderReviewCards();
+    loadReview(false);
+  </script>
+</body>
+</html>
