@@ -1,10 +1,10 @@
-# Science Exhibition Guide
+# 科展指導教材網站
 
-科學展覽（科展）指導教學網站原型，將科展學習流程拆成可教、可練、可檢核、可播放的網頁模組。
+科學展覽（科展）指導教材網站，將科展學習流程拆成可教、可練、可檢核、可播放的網頁模組。
 
 ## 內容
 
-- 單頁式教學網站：`science_fair_guidance_article.html`
+- 單頁式教材網站：`science_fair_guidance_article.html`
 - 首屏視覺素材：`assets/science-fair-workspace.png`
 - 八大流程網頁簡報資料與播放器邏輯：`assets/science-fair-slide-decks.js`
 - 原始文章備份：`.docx`、`.doc`、`.pdf`、`.md`
