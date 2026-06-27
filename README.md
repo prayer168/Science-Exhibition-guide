@@ -4,7 +4,7 @@
 
 ## 內容
 
-- 單頁式教材網站：`science_fair_guidance_article.html`
+- 單頁式教材網站：`index.html`
 - 首屏視覺素材：`assets/science-fair-workspace.png`
 - 八大流程網頁簡報資料與播放器邏輯：`assets/science-fair-slide-decks.js`
 - 原始文章備份：`.docx`、`.doc`、`.pdf`、`.md`
@@ -25,7 +25,7 @@
 直接用瀏覽器開啟：
 
 ```text
-science_fair_guidance_article.html
+index.html
 ```
 
 此網站目前為純前端靜態頁面，不需要啟動伺服器。
