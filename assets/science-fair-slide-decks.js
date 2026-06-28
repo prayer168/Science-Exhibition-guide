@@ -219,6 +219,11 @@
       src: "science_fair_literature_review_slides.html",
       pages: 13,
       label: "完整簡報"
+    },
+    motivation: {
+      src: "science_fair_motivation_slides.html",
+      pages: 13,
+      label: "完整簡報"
     }
   };
 

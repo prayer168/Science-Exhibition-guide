@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>科展引起動機｜網頁簡報</title>
+<style>
+  :root{--bg:#f7fbf4;--ink:#23342f;--muted:#5f716a;--green:#2f7d59;--lime:#a8d977;--yellow:#ffd166;--orange:#f4a261;--blue:#6bb6ff;--card:#ffffff;--line:#dbe8d4;--red:#d25b4c;}
+  *{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:linear-gradient(135deg,#eaf7df,#eef8ff)}
+  .deck{height:100vh;overflow:hidden;position:relative}.slide{display:none;height:100vh;width:100vw;padding:54px 70px 64px;position:absolute;inset:0;background:radial-gradient(circle at 88% 14%,rgba(168,217,119,.35),transparent 23%),radial-gradient(circle at 8% 88%,rgba(107,182,255,.20),transparent 25%),var(--bg)}
+  .slide.active{display:block;animation:fade .25s ease}@keyframes fade{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}
+  h1{font-size:58px;line-height:1.12;margin:0 0 18px;font-weight:900;letter-spacing:.02em}h2{font-size:42px;line-height:1.15;margin:0 0 24px;font-weight:900;color:#1f5c42}h3{font-size:26px;margin:0 0 12px;color:#2f7d59}p,li{font-size:23px;line-height:1.55}ul{padding-left:1.2em;margin:0}.small{font-size:18px;color:var(--muted)}.lead{font-size:30px;max-width:850px;color:#36514a}.tag{display:inline-block;background:#e7f5d7;border:2px solid #c7e8a6;border-radius:999px;padding:8px 18px;font-size:20px;font-weight:700;color:#2f6d50}.grid{display:grid;gap:20px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.card{background:rgba(255,255,255,.88);border:2px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 16px 32px rgba(37,71,52,.08)}.bigcard{padding:32px}.emoji{font-size:46px;display:block;margin-bottom:10px}.num{width:48px;height:48px;border-radius:50%;display:inline-grid;place-items:center;background:var(--green);color:#fff;font-weight:900;margin-right:12px}.bar{height:14px;background:linear-gradient(90deg,var(--green),var(--lime),var(--yellow));border-radius:99px;margin:18px 0 26px}.footer{position:absolute;bottom:26px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;color:#739083;font-size:16px}.progress{position:absolute;bottom:0;left:0;height:7px;background:linear-gradient(90deg,var(--green),var(--lime));width:0}.nav{position:absolute;right:24px;bottom:22px;display:flex;gap:10px}.nav button{border:0;border-radius:14px;background:#285d45;color:white;font-size:20px;padding:10px 15px;cursor:pointer}.title-visual{position:absolute;right:70px;bottom:100px;width:355px;height:355px;border-radius:44px;background:linear-gradient(145deg,#fff,#e8f7e1);border:3px solid #d5ebca;display:grid;place-items:center;box-shadow:0 25px 55px rgba(45,99,67,.16)}.magnify{font-size:150px}.quote{font-size:31px;line-height:1.45;font-weight:800;color:#24533f}.formula{font-size:27px;font-weight:900;background:#fff7d6;border:2px dashed #e2b93f;border-radius:22px;padding:18px;text-align:center}.bad{border-color:#ffc0b5;background:#fff5f2}.good{border-color:#a9dfb5;background:#f4fff7}.table{width:100%;border-collapse:separate;border-spacing:0 12px}.table td,.table th{font-size:20px;padding:13px 16px;background:white;border-top:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}.table th{background:#e7f5d7}.table td:first-child,.table th:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px;font-weight:800}.table td:last-child,.table th:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}.pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#eef7ff;color:#27608e;font-size:18px;font-weight:700;margin:3px}.check li{margin:8px 0}.check li::marker{content:"✓  ";color:var(--green);font-weight:900}.warn li::marker{content:"✕  ";color:var(--red);font-weight:900}.flow{display:flex;align-items:center;gap:12px;margin-top:20px}.flow .step{flex:1;text-align:center;font-size:21px;font-weight:800;background:white;border:2px solid #dbe8d4;border-radius:22px;padding:18px}.arrow{font-size:34px;color:#5f8d6d}.mini{font-size:19px;line-height:1.42}.cover{padding-top:90px}.cover h1{max-width:760px}.cover .lead{max-width:760px}.topline{width:140px;height:10px;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--yellow));margin-bottom:24px}.note{background:#fff;border-left:9px solid var(--yellow);padding:18px 22px;border-radius:18px;font-size:23px}.src{font-size:15px;color:#6f8179;margin-top:16px}
+  @media print{.slide{display:block;position:relative;page-break-after:always}.nav,.progress{display:none}body,.deck{height:auto;overflow:visible}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+<section class="slide cover active">
+  <div class="topline"></div><span class="tag">國小科展指導｜引起動機</span>
+  <h1>引起動機：<br>讓研究從「好奇」開始，走向「可探究」</h1>
+  <p class="lead">這份簡報協助學生把生活觀察、疑問、驚訝與困擾，轉化成科展作品書中有脈絡、有說服力的研究動機。</p>
+  <div class="title-visual"><div class="magnify">💡🔍</div></div>
+</section>
+
+<section class="slide">
+  <h2>1｜什麼是「引起動機」？</h2>
+  <div class="grid g2">
+    <div class="card bigcard"><span class="emoji">🌱</span><h3>不是作文開頭</h3><p>引起動機不是寫「我很喜歡自然，所以想研究……」，而是說明：我看見了什麼現象？為什麼它值得研究？</p></div>
+    <div class="card bigcard"><span class="emoji">🧭</span><h3>它要帶出研究方向</h3><ul class="check"><li>從生活經驗出發</li><li>提出明確疑問</li><li>連結科學概念</li><li>導向研究目的</li></ul></div>
+  </div>
+  <p class="note">一句話：引起動機要回答「我為什麼想做這個研究？」</p>
+</section>
+
+<section class="slide">
+  <h2>2｜好的研究動機要具備 4 個元素</h2>
+  <div class="grid g2">
+    <div class="card"><span class="num">1</span><h3>真實觀察</h3><p class="mini">從校園、家庭、課堂、社區、自然環境中看到的現象開始。</p></div>
+    <div class="card"><span class="num">2</span><h3>產生疑問</h3><p class="mini">不是只有描述現象，而是提出「為什麼、如何、差異在哪裡」。</p></div>
+    <div class="card"><span class="num">3</span><h3>可用科學解釋</h3><p class="mini">能連結變因、測量、比較、實驗或觀察紀錄。</p></div>
+    <div class="card"><span class="num">4</span><h3>能接到研究目的</h3><p class="mini">最後自然導出「因此我們想探討……」。</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>3｜從哪裡找引起動機？</h2>
+  <div class="grid g3">
+    <div class="card"><span class="emoji">🏫</span><h3>校園觀察</h3><p class="mini">昆蟲、植物、積水、溫度、風、光影、土壤、落葉。</p></div>
+    <div class="card"><span class="emoji">🏠</span><h3>生活問題</h3><p class="mini">保溫、清潔、防滑、防曬、食物保存、聲音與材料。</p></div>
+    <div class="card"><span class="emoji">🧪</span><h3>課堂實驗</h3><p class="mini">把課本實驗中的「還可以改變什麼？」變成研究。</p></div>
+    <div class="card"><span class="emoji">📰</span><h3>新聞與議題</h3><p class="mini">氣候、環境、生態、能源，但要縮小成可操作題目。</p></div>
+    <div class="card"><span class="emoji">🔧</span><h3>失敗經驗</h3><p class="mini">作品做不好、實驗失敗、觀察不到，常是很好的研究起點。</p></div>
+    <div class="card"><span class="emoji">❓</span><h3>反常現象</h3><p class="mini">和直覺不同、和同學想的不一樣，最容易引出探究。</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>4｜把生活事件變成科學問題</h2>
+  <div class="flow"><div class="step">看到現象<br><span class="small">校園水溝有蚊子</span></div><div class="arrow">→</div><div class="step">產生疑問<br><span class="small">哪種環境較容易孳生？</span></div><div class="arrow">→</div><div class="step">找可測變因<br><span class="small">水深、遮蔭、落葉量</span></div><div class="arrow">→</div><div class="step">形成題目<br><span class="small">環境因子與孑孓數量</span></div></div>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="card bad"><h3>較弱動機</h3><p>因為蚊子很多，所以我們想研究蚊子。</p></div>
+    <div class="card good"><h3>較好動機</h3><p>我們發現校園不同積水區的孑孓數量不同，因此想比較水深、遮蔭與落葉量是否會影響孑孓出現的情形。</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>5｜什麼動機不夠好？</h2>
+  <table class="table">
+    <tr><th>常見寫法</th><th>問題</th><th>可以怎麼改</th></tr>
+    <tr><td>我覺得這個很有趣</td><td>太主觀，缺少現象</td><td>描述看到的具體現象與疑問</td></tr>
+    <tr><td>老師叫我們做科展</td><td>沒有研究價值</td><td>改寫成課堂中延伸出的問題</td></tr>
+    <tr><td>網路上說這個很神奇</td><td>來源不明，也不一定可研究</td><td>先查資料，再設計可測試的比較</td></tr>
+    <tr><td>我們想證明某方法最好</td><td>容易變成先有答案</td><td>改為比較不同條件下的差異</td></tr>
+  </table>
+</section>
+
+<section class="slide">
+  <h2>6｜引起動機的寫作公式</h2>
+  <div class="formula">生活觀察 ＋ 產生疑問 ＋ 初步查證 ＋ 研究價值 ＋ 因此想探討</div>
+  <div class="grid g2" style="margin-top:26px">
+    <div class="card bigcard"><h3>可套用句型</h3><ul class="check"><li>我們在……時發現……</li><li>這讓我們好奇……是否會影響……</li><li>查閱資料後得知……</li><li>但我們仍想知道……</li><li>因此本研究想探討……</li></ul></div>
+    <div class="card bigcard"><h3>提醒</h3><p class="quote">動機不要太長，重點是讓讀者看見「問題怎麼被發現」與「研究為什麼有必要」。</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>7｜範例一：雨聲筒研究動機</h2>
+  <div class="card bigcard">
+    <h3>主題：不同材料與填充物對雨聲筒聲音的影響</h3>
+    <p>在音樂課與自然課中，我們發現雨聲筒轉動時會產生像雨聲一樣的聲音，但不同雨聲筒聽起來有的像細雨，有的像急雨。我們好奇聲音差異是否和管子材質、填充物種類或內部結構有關。初步觀察後發現，聲音可以透過音量、振幅變化或波峰密度進行比較，因此本研究想探討不同設計條件對雨聲筒聲音表現的影響。</p>
+  </div>
+  <p class="note">亮點：有生活情境、有差異觀察，也能導向可測量指標。</p>
+</section>
+
+<section class="slide">
+  <h2>8｜範例二：昆蟲旅館研究動機</h2>
+  <div class="grid g2">
+    <div class="card bigcard"><h3>觀察起點</h3><p>校園設置昆蟲旅館後，我們發現有些竹管被泥土封住，有些卻完全沒有被使用。</p></div>
+    <div class="card bigcard"><h3>轉成問題</h3><p>這讓我們想知道：獨居蜂是否會偏好特定內徑、材質、朝向或高度的巢管？</p></div>
+  </div>
+  <div class="card bigcard" style="margin-top:22px"><h3>可寫成動機</h3><p>因為昆蟲旅館常被用來推廣校園生態教育，但如果巢材條件不適合，可能無法真正幫助獨居蜂築巢。因此本研究想透過長期觀察，了解不同巢管條件與封巢情形之間的關係，作為校園昆蟲旅館改善的參考。</p></div>
+</section>
+
+<section class="slide">
+  <h2>9｜範例三：植物照顧研究動機</h2>
+  <table class="table">
+    <tr><th>生活現象</th><th>疑問</th><th>可研究題目</th></tr>
+    <tr><td>同一批盆栽放在不同位置，生長差很多。</td><td>光照時間會不會影響葉片數與高度？</td><td>不同光照時間對綠豆幼苗生長的影響</td></tr>
+    <tr><td>有些多肉植物澆太多水反而枯萎。</td><td>水量多少才適合不同植物？</td><td>不同澆水頻率對多肉植物外觀變化的影響</td></tr>
+    <tr><td>校園樹下比操場涼。</td><td>植物蒸散與遮蔭哪個影響較明顯？</td><td>不同地表環境的溫度差異比較</td></tr>
+  </table>
+  <p class="note">好的動機通常能直接接出「變因」和「測量項目」。</p>
+</section>
+
+<section class="slide">
+  <h2>10｜讓動機更有科學味：加入「比較」</h2>
+  <div class="grid g2">
+    <div class="card bad"><h3>只有描述</h3><p>我們發現紙飛機可以飛很遠，所以想研究紙飛機。</p></div>
+    <div class="card good"><h3>加入比較</h3><p>我們發現同學摺的紙飛機飛行距離不同，因此想比較翼寬、紙張重量與機頭重量是否會影響飛行距離與穩定度。</p></div>
+  </div>
+  <div class="bar"></div>
+  <div class="grid g3">
+    <div class="card"><h3>比較材料</h3><p class="mini">竹管、紙管、塑膠管、金屬管。</p></div>
+    <div class="card"><h3>比較條件</h3><p class="mini">光照、溫度、濕度、角度、高度。</p></div>
+    <div class="card"><h3>比較結果</h3><p class="mini">時間、距離、數量、高度、分貝、面積。</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>11｜引起動機檢核表</h2>
+  <div class="grid g2">
+    <div class="card bigcard"><h3>完成前請確認</h3><ul class="check"><li>有沒有寫出真實觀察？</li><li>有沒有提出明確疑問？</li><li>有沒有連到科學概念？</li><li>有沒有說明研究價值？</li><li>最後是否自然接到研究目的？</li></ul></div>
+    <div class="card bigcard"><h3>避免出現</h3><ul class="warn"><li>只有「我很有興趣」</li><li>只有百科定義</li><li>一開始就說要證明答案</li><li>研究範圍太大</li><li>沒有可測量的內容</li></ul></div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>12｜課堂練習：三句話寫出動機</h2>
+  <div class="grid g2">
+    <div class="card bigcard"><h3>三句話模板</h3><p class="formula">我發現……<br>我好奇……<br>因此我想研究……</p></div>
+    <div class="card bigcard"><h3>進階版</h3><p class="formula">現象 → 疑問 → 初步資料 → 研究價值 → 研究目的</p></div>
+  </div>
+  <p class="note">練習任務：請學生從校園中選一個現象，先寫三句話，再改寫成 150～250 字的科展作品書「研究動機」。</p>
+</section>
+
+</div>
+<div class="progress" id="progress"></div>
+<div class="nav"><button onclick="prev()">‹</button><button onclick="next()">›</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let idx=0;
+function show(i){idx=(i+slides.length)%slides.length;slides.forEach((s,n)=>s.classList.toggle('active',n===idx));document.getElementById('progress').style.width=((idx+1)/slides.length*100)+'%';document.querySelectorAll('.footer').forEach(f=>f.remove());slides.forEach((s,n)=>{let f=document.createElement('div');f.className='footer';f.innerHTML='<span>科展引起動機</span><span>'+(n+1)+' / '+slides.length+'</span>';s.appendChild(f);});}
+function next(){show(idx+1)}function prev(){show(idx-1)}
+document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))next();if(['ArrowLeft','PageUp'].includes(e.key))prev();});show(0);
+</script>
+</body>
+</html>
