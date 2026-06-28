@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>科展複試口頭報告｜16頁網頁簡報</title>
+  <style>
+    :root{
+      --bg:#f6f1e8; --paper:#fffdf8; --ink:#1f2933; --muted:#5b6472;
+      --green:#2f7d57; --blue:#2f6f9f; --orange:#d97706; --red:#b91c1c;
+      --line:#e6dccb; --shadow:0 18px 45px rgba(31,41,51,.13);
+    }
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(135deg,#f6f1e8,#eef7f1);font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink)}
+    .deck{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+    .slide{display:none;width:min(1120px,94vw);min-height:630px;background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:54px 64px;position:relative;overflow:hidden}
+    .slide.active{display:block}.slide:before{content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;background:rgba(47,125,87,.12)}
+    .slide:after{content:"";position:absolute;left:-110px;bottom:-120px;width:300px;height:300px;border-radius:50%;background:rgba(47,111,159,.10)}
+    h1{font-size:54px;line-height:1.15;margin:0 0 20px;color:#173b2c}h2{font-size:39px;margin:0 0 28px;color:#173b2c}h3{font-size:25px;margin:0 0 12px;color:var(--blue)}
+    p,li{font-size:23px;line-height:1.65}.lead{font-size:29px;color:var(--muted);line-height:1.55}.small{font-size:18px;color:var(--muted)}
+    .tag{display:inline-block;padding:8px 16px;border-radius:999px;background:#e7f3ec;color:#236348;font-weight:700;margin-bottom:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff8ed;border:1px solid #eadfcf;border-radius:22px;padding:22px}.card.blue{background:#eef6fb}.card.green{background:#eef8f1}.card.orange{background:#fff4e6}.card.red{background:#fff0f0}.num{font-size:42px;font-weight:900;color:var(--green)}
+    .quote{font-size:30px;line-height:1.55;border-left:8px solid var(--green);padding-left:24px;color:#244034;background:#f0f8f3;border-radius:0 18px 18px 0;padding-top:18px;padding-bottom:18px}.footer{position:absolute;left:64px;right:64px;bottom:28px;display:flex;justify-content:space-between;color:#8a7660;font-size:16px}.controls{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:10px;z-index:10}.controls button{border:0;border-radius:999px;background:#173b2c;color:white;padding:10px 18px;font-size:16px;cursor:pointer}.progress{position:fixed;left:0;top:0;height:6px;background:var(--green);width:0%;z-index:20}.pill{display:inline-block;background:#173b2c;color:#fff;border-radius:12px;padding:6px 12px;margin:4px;font-size:18px}.check li{margin-bottom:10px}.big{font-size:34px;font-weight:900;color:var(--orange)}
+    @media print{body{background:white}.deck{display:block;padding:0}.slide{display:block;page-break-after:always;width:100%;min-height:100vh;box-shadow:none;border-radius:0}.controls,.progress{display:none}}
+  </style>
+</head>
+<body>
+<div class="progress" id="progress"></div><main class="deck">
+<section class="slide active"><span class="tag">科展指導系列｜複試口頭報告</span><h1>複試口頭報告</h1><p class="lead">把作品書裡的研究，轉化成評審聽得懂、看得見、問得出亮點的科學故事。</p><div class="footer"><span>01 / 16</span><span>黑熊老師科展指導</span></div></section>
+<section class="slide"><h2>1. 複試不是背稿比賽</h2><div class="quote">複試重點不是「講完所有內容」，而是讓評審相信：你真的理解自己的研究。</div><p>口頭報告要展現三件事：研究問題清楚、方法合理、結果能支持結論。回答問題時，更要說出自己做過什麼、為什麼這樣做、從資料看到了什麼。</p><div class="footer"><span>02 / 16</span><span></span></div></section>
+<section class="slide"><h2>2. 口頭報告的核心任務</h2><div class="grid3"><div class="card green"><div class="num">1</div><h3>說清楚</h3><p>用簡單語言講出研究問題與發現。</p></div><div class="card blue"><div class="num">2</div><h3>說有據</h3><p>用數據、圖表、照片支持你的說法。</p></div><div class="card orange"><div class="num">3</div><h3>說得像研究者</h3><p>能解釋設計、限制、誤差與改進。</p></div></div><div class="footer"><span>03 / 16</span><span></span></div></section>
+<section class="slide"><h2>3. 建議報告架構</h2><div class="card"><p><span class="pill">研究動機</span><span class="pill">研究問題</span><span class="pill">研究設計</span><span class="pill">資料結果</span><span class="pill">討論解釋</span><span class="pill">結論應用</span></p></div><p>報告順序要像一條清楚的路線：從「為什麼想做」開始，到「怎麼做、看到什麼、代表什麼」結束。</p><div class="footer"><span>04 / 16</span><span></span></div></section>
+<section class="slide"><h2>4. 開場：30秒抓住評審</h2><div class="grid"><div class="card green"><h3>好的開場</h3><p>從生活觀察、疑問或衝突開始，例如：「為什麼同樣是雨聲筒，有些聲音像下雨，有些卻像倒豆子？」</p></div><div class="card red"><h3>避免的開場</h3><p>只念標題、只說「大家好，我們今天要報告……」，容易讓作品失去特色。</p></div></div><div class="footer"><span>05 / 16</span><span></span></div></section>
+<section class="slide"><h2>5. 研究問題要講得精準</h2><p>評審最在意的是：你到底想解決什麼問題？</p><ul class="check"><li>不要只說「研究植物生長」。</li><li>要說「不同光照時間是否會影響綠豆幼苗高度與葉片數？」</li><li>問題越可測量，實驗越容易被理解。</li></ul><div class="footer"><span>06 / 16</span><span></span></div></section>
+<section class="slide"><h2>6. 方法說明：講設計，不背步驟</h2><div class="grid"><div class="card blue"><h3>要說明</h3><p>操縱變因、應變變因、控制變因、樣本數、測量方式、重複次數。</p></div><div class="card orange"><h3>不要只說</h3><p>第一步、第二步、第三步……評審想知道的是「為什麼這樣設計」。</p></div></div><div class="footer"><span>07 / 16</span><span></span></div></section>
+<section class="slide"><h2>7. 圖表是報告的主角</h2><p>一張好圖表，可以取代一大段文字。</p><div class="grid3"><div class="card"><h3>圖表標題</h3><p>清楚寫出比較對象。</p></div><div class="card"><h3>座標單位</h3><p>時間、長度、溫度、次數要標明。</p></div><div class="card"><h3>趨勢解讀</h3><p>不要只念數字，要說出變化。</p></div></div><div class="footer"><span>08 / 16</span><span></span></div></section>
+<section class="slide"><h2>8. 結果說法：從數據走向發現</h2><div class="quote">不要說：「這組最高。」<br>要說：「在三次重複測量中，A組平均高度最高，顯示光照時間增加可能促進幼苗生長。」</div><p>結果要包含「數據證據」與「科學解釋」，但不要把沒有證據的推論說成定論。</p><div class="footer"><span>09 / 16</span><span></span></div></section>
+<section class="slide"><h2>9. 討論：展現研究深度</h2><ul class="check"><li>結果是否支持原本假設？</li><li>可能受到哪些誤差影響？</li><li>和文獻資料是否相同或不同？</li><li>如果再做一次，會如何改進？</li></ul><p class="big">會討論限制的學生，反而更像真正的研究者。</p><div class="footer"><span>10 / 16</span><span></span></div></section>
+<section class="slide"><h2>10. 結論：短、準、有對應</h2><div class="grid"><div class="card green"><h3>好的結論</h3><p>逐一回應研究問題，指出最重要發現，並說明可以應用或延伸的方向。</p></div><div class="card red"><h3>常見問題</h3><p>結論太長、重複結果、加入沒做過的推論，或只說「我們學到很多」。</p></div></div><div class="footer"><span>11 / 16</span><span></span></div></section>
+<section class="slide"><h2>11. 評審常問的問題</h2><div class="grid"><div class="card"><h3>設計類</h3><p>為什麼選這個變因？為什麼樣本數這樣安排？</p></div><div class="card"><h3>資料類</h3><p>如何確認資料可靠？有沒有重複測量？</p></div><div class="card"><h3>解釋類</h3><p>這個結果可能代表什麼？有沒有其他可能原因？</p></div><div class="card"><h3>延伸類</h3><p>如果繼續研究，下一步會做什麼？</p></div></div><div class="footer"><span>12 / 16</span><span></span></div></section>
+<section class="slide"><h2>12. 回答問題的三步驟</h2><div class="grid3"><div class="card green"><div class="num">1</div><h3>先確認</h3><p>「您的問題是想了解……嗎？」</p></div><div class="card blue"><div class="num">2</div><h3>用證據</h3><p>回到數據、照片、紀錄表或文獻。</p></div><div class="card orange"><div class="num">3</div><h3>承認限制</h3><p>不知道時說出合理推測與可驗證方法。</p></div></div><div class="footer"><span>13 / 16</span><span></span></div></section>
+<section class="slide"><h2>13. 團隊分工與站位</h2><ul class="check"><li>每位學生都要能回答核心研究問題。</li><li>不要只有一人主講，其餘同學只站著。</li><li>站位避免擋住海報或螢幕。</li><li>切換講者時，用一句話自然銜接。</li></ul><div class="footer"><span>14 / 16</span><span></span></div></section>
+<section class="slide"><h2>14. 複試前練習清單</h2><div class="card blue"><ul class="check"><li>3分鐘版、5分鐘版、8分鐘版各練一次。</li><li>練習不看稿，用圖表當提示。</li><li>請老師或同學扮演評審提問。</li><li>把最常卡住的問題整理成答題卡。</li><li>確認簡報、海報、作品、實驗材料都能正常展示。</li></ul></div><div class="footer"><span>15 / 16</span><span></span></div></section>
+<section class="slide"><h2>15. 常見扣分問題</h2><div class="grid"><div class="card red"><h3>內容問題</h3><p>只背作品書、圖表看不懂、變因說不清楚、結論超出資料。</p></div><div class="card red"><h3>表達問題</h3><p>語速太快、聲音太小、講者不看評審、回答問題互相推託。</p></div></div><p>複試不是完美表演，而是要讓評審看到你有科學理解與研究態度。</p><div class="footer"><span>16 / 16</span><span></span></div></section>
+<section class="slide"><h2>複試口頭報告一句話</h2><div class="quote">用清楚的故事說明研究，用可靠的資料支持結論，用誠實的態度面對提問。</div><p class="lead">能講出「我為什麼這樣做、資料告訴我什麼、下一步還能怎麼改」，就是一場有說服力的科展報告。</p><div class="footer"><span>加強頁</span><span>可列印／投影／離線使用</span></div></section>
+</main><div class="controls"><button onclick="prevSlide()">上一頁</button><button onclick="nextSlide()">下一頁</button><button onclick="window.print()">列印 / 轉 PDF</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;const progress=document.getElementById('progress');
+function show(n){i=(n+slides.length)%slides.length;slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));progress.style.width=((i+1)/slides.length*100)+'%'}
+function nextSlide(){show(i+1)}function prevSlide(){show(i-1)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')nextSlide();if(e.key==='ArrowLeft')prevSlide();});show(0);
+</script></body></html>

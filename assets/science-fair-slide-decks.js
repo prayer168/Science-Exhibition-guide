@@ -244,6 +244,11 @@
       src: "science_fair_written_report_slides.html",
       pages: 16,
       label: "完整簡報"
+    },
+    oral: {
+      src: "science_fair_oral_presentation_slides.html",
+      pages: 17,
+      label: "完整簡報"
     }
   };
 
