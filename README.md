@@ -6,14 +6,14 @@
 
 - 單頁式教材網站：`index.html`
 - 首屏視覺素材：`assets/science-fair-workspace.png`
-- 八大流程網頁簡報資料與播放器邏輯：`assets/science-fair-slide-decks.js`
+- 九大流程網頁簡報資料與播放器邏輯：`assets/science-fair-slide-decks.js`
 - 原始文章備份：`.docx`、`.doc`、`.pdf`、`.md`
 
 ## 主要功能
 
 - 科展學習地圖
-- 八大教學流程說明
-- 72 頁網頁簡報，每頁使用純 HTML/CSS 插圖
+- 九大教學流程說明
+- 依主題需求安排頁數的網頁簡報，可嵌入各流程原始 HTML 簡報
 - 題目句型產生器
 - 題目可行性評分
 - 研究動機草稿產生
