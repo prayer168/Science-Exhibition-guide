@@ -234,6 +234,11 @@
       src: "science_fair_data_analysis_slides.html",
       pages: 16,
       label: "完整簡報"
+    },
+    discussion: {
+      src: "science_fair_discussion_conclusion_slides.html",
+      pages: 16,
+      label: "完整簡報"
     }
   };
 
