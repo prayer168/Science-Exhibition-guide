@@ -82,11 +82,15 @@
     }
 
     h1 {
-      max-width: 760px;
+      max-width: 1080px;
       margin: 18px 0 16px;
-      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-size: clamp(2.4rem, 5.2vw, 4.1rem);
       line-height: 1.08;
       letter-spacing: 0;
+    }
+
+    .hero-title-line {
+      display: block;
     }
 
     .hero p {
@@ -1818,6 +1822,10 @@
         font-size: clamp(2.1rem, 11vw, 3.4rem);
       }
 
+      .hero-title-line {
+        display: inline;
+      }
+
       .hero-actions,
       .review-actions,
       .deck-buttons {
@@ -2243,7 +2251,7 @@
 <body>
   <header class="hero" id="top">
     <div class="hero-inner">
-      <h1>從題目發想到複試口頭報告的完整科展流程</h1>
+      <h1><span class="hero-title-line">從題目發想到複試口頭報告的</span><span class="hero-title-line">完整科展流程</span></h1>
       <p>把「科展」拆成可以教、可以練、可以檢核、可以產出作品書與口頭報告的學習流程，適合國小高年級至國中教師、學生社團與校內培訓使用。</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#map">開始看學習地圖</a>
