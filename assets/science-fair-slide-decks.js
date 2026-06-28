@@ -305,14 +305,20 @@
     const externalDeck = externalDecks[deck.id];
     progressList.classList.toggle("external-deck", Boolean(externalDeck));
     if (externalDeck) {
-      progressList.innerHTML = `
+      progressList.innerHTML = decks
+        .map((item, index) => {
+          const itemDeck = externalDecks[item.id];
+          const pageLabel = itemDeck ? `（${itemDeck.pages} 頁）` : "";
+          return `
         <li>
-          <button type="button" aria-current="true">
-            <span>${deck.no}</span>
-            <span>${escapeHtml(externalDeck.label)}（${externalDeck.pages} 頁）</span>
+          <button type="button" data-deck-jump="${index}" aria-current="${index === deckIndex}">
+            <span>${item.no}</span>
+            <span>${escapeHtml(item.title)}${pageLabel}</span>
           </button>
         </li>
       `;
+        })
+        .join("");
       return;
     }
 
@@ -590,6 +596,14 @@
   });
 
   progressList.addEventListener("click", (event) => {
+    const deckButton = event.target.closest("[data-deck-jump]");
+    if (deckButton) {
+      deckIndex = Number(deckButton.dataset.deckJump);
+      slideIndex = 0;
+      renderSlide();
+      return;
+    }
+
     const button = event.target.closest("[data-slide-jump]");
     if (!button) return;
     slideIndex = Number(button.dataset.slideJump);
