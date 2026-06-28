@@ -224,6 +224,11 @@
       src: "science_fair_motivation_slides.html",
       pages: 13,
       label: "完整簡報"
+    },
+    design: {
+      src: "science_fair_experimental_design_slides.html",
+      pages: 32,
+      label: "完整簡報"
     }
   };
 

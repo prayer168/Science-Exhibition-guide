@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>科展實驗研究設計｜網頁簡報</title>
+  <style>
+    :root{
+      --bg:#f4fbf7;
+      --card:#ffffff;
+      --ink:#17352c;
+      --muted:#58706a;
+      --green:#1f8a5b;
+      --green2:#42b883;
+      --blue:#2d7dd2;
+      --orange:#f4a261;
+      --red:#d95d39;
+      --line:#d8eadf;
+      --shadow:0 16px 45px rgba(23,53,44,.13);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(66,184,131,.25), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(45,125,210,.16), transparent 38%),
+        var(--bg);
+      overflow:hidden;
+    }
+    .deck{width:100vw;height:100vh;position:relative;}
+    .slide{
+      position:absolute;inset:0;
+      padding:56px 72px 72px;
+      display:none;
+      align-items:center;
+      justify-content:center;
+    }
+    .slide.active{display:flex;animation:fade .28s ease-out;}
+    @keyframes fade{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .canvas{
+      width:min(1180px,100%);
+      height:min(680px,100%);
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(216,234,223,.95);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:44px 52px;
+      position:relative;
+      overflow:hidden;
+    }
+    .canvas:before{
+      content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;
+      background:rgba(66,184,131,.14);
+    }
+    .tag{display:inline-flex;gap:8px;align-items:center;background:#e7f6ee;color:#146943;border:1px solid #c9ead7;border-radius:999px;padding:8px 14px;font-weight:700;font-size:18px;}
+    h1{font-size:58px;line-height:1.13;margin:24px 0 18px;letter-spacing:.02em;}
+    h2{font-size:42px;line-height:1.25;margin:0 0 22px;}
+    h3{font-size:26px;margin:0 0 12px;color:#146943;}
+    p,li{font-size:25px;line-height:1.65;}
+    p{margin:0 0 16px;}
+    ul,ol{margin:10px 0 0 1.2em;padding:0;}
+    li{margin:8px 0;}
+    .muted{color:var(--muted)}
+    .big{font-size:31px;line-height:1.6;}
+    .grid{display:grid;gap:20px;}
+    .grid.two{grid-template-columns:1fr 1fr;}
+    .grid.three{grid-template-columns:repeat(3,1fr);}
+    .box{background:#f8fffb;border:1px solid var(--line);border-radius:22px;padding:22px 24px;}
+    .box.blue{background:#f2f8ff;border-color:#cfe2fb;}
+    .box.orange{background:#fff7ed;border-color:#f8dfbd;}
+    .box.red{background:#fff4f1;border-color:#f4c9bd;}
+    .box.green{background:#effaf4;border-color:#ccebd9;}
+    .small{font-size:20px;line-height:1.55;}
+    .tiny{font-size:17px;line-height:1.45;}
+    .pill{display:inline-block;border-radius:999px;padding:6px 12px;background:#edf7f1;color:#176b48;font-weight:700;margin:4px 4px 4px 0;font-size:18px;}
+    .flow{display:flex;align-items:stretch;gap:12px;margin-top:20px;}
+    .step{flex:1;background:#f8fffb;border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center;font-weight:700;font-size:21px;line-height:1.4;}
+    .arrow{display:flex;align-items:center;color:var(--green);font-size:28px;font-weight:900;}
+    table{width:100%;border-collapse:collapse;margin-top:14px;font-size:19px;line-height:1.45;background:#fff;border-radius:16px;overflow:hidden;}
+    th,td{border:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top;}
+    th{background:#eaf7f0;color:#145f40;font-weight:800;}
+    .note{position:absolute;left:52px;right:52px;bottom:24px;border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:16px;}
+    .slideNo{position:absolute;right:30px;bottom:24px;background:#17352c;color:#fff;border-radius:999px;padding:7px 13px;font-weight:700;font-size:16px;}
+    .controls{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:999px;padding:8px 12px;box-shadow:0 8px 20px rgba(0,0,0,.08);z-index:20;}
+    button{border:0;border-radius:999px;background:#1f8a5b;color:#fff;padding:10px 16px;font-size:16px;font-weight:700;cursor:pointer;}
+    button.secondary{background:#edf7f1;color:#176b48;}
+    .progress{position:fixed;left:0;top:0;height:6px;background:linear-gradient(90deg,var(--green),var(--blue));width:0%;z-index:30;}
+    .icon{font-size:54px;line-height:1;margin-bottom:10px;}
+    .example{font-family:inherit;background:#17352c;color:#fff;border-radius:18px;padding:20px 22px;font-size:22px;line-height:1.6;}
+    .badgood{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px;}
+    .mark{font-size:30px;font-weight:900;margin-right:8px;}
+    .redText{color:#b64023}.greenText{color:#146943}.blueText{color:#245fae}
+    @media print{
+      body{overflow:visible;background:white;}
+      .deck{height:auto}.slide{position:relative;display:flex!important;height:100vh;page-break-after:always;padding:30px}.controls,.progress{display:none}.canvas{box-shadow:none;width:100%;height:92vh}
+    }
+    @media (max-width:900px){.slide{padding:18px}.canvas{padding:30px 24px;height:auto;min-height:85vh}h1{font-size:40px}h2{font-size:32px}p,li{font-size:21px}.grid.two,.grid.three,.badgood{grid-template-columns:1fr}.flow{flex-direction:column}.arrow{justify-content:center;transform:rotate(90deg)}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <main class="deck" id="deck">
+    <section class="slide active"><div class="canvas">
+      <span class="tag">科展指導簡報｜實驗研究設計</span>
+      <h1>把「想知道」變成<br>可以驗證的實驗</h1>
+      <p class="big muted">本單元帶學生學會：如何提出研究問題、設計公平實驗、控制變因、收集資料，讓科展作品從「觀察」走向「證據」。</p>
+      <div class="flow">
+        <div class="step">問題</div><div class="arrow">→</div><div class="step">假設</div><div class="arrow">→</div><div class="step">變因</div><div class="arrow">→</div><div class="step">步驟</div><div class="arrow">→</div><div class="step">資料</div>
+      </div>
+      <div class="note">操作提示：鍵盤 ← → 或下方按鈕切換頁面。</div><div class="slideNo">1 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>1. 實驗研究設計在科展中的角色</h2>
+      <div class="grid three">
+        <div class="box green"><div class="icon">🔍</div><h3>讓問題變清楚</h3><p>把生活中的好奇心，轉成可以測量、可以比較的研究問題。</p></div>
+        <div class="box blue"><div class="icon">⚖️</div><h3>讓比較變公平</h3><p>一次只改變一個主要條件，其餘條件盡量保持一致。</p></div>
+        <div class="box orange"><div class="icon">📊</div><h3>讓結論有證據</h3><p>用數據、表格、圖表和重複實驗支持討論與結論。</p></div>
+      </div>
+      <p class="big" style="margin-top:24px;"><strong>重點：</strong>好科展不是「做很多」，而是「設計得清楚、證據夠可靠」。</p>
+      <div class="slideNo">2 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>2. 從研究題目到研究問題</h2>
+      <p class="big">題目通常比較大，研究問題要更具體，才能進入實驗設計。</p>
+      <div class="badgood">
+        <div class="box red"><h3 class="redText">還不夠清楚</h3><p>「哪一種降落傘最好？」</p><p class="small muted">問題太大，最好是指什麼？飛最遠？下降最慢？最穩定？</p></div>
+        <div class="box green"><h3 class="greenText">可以研究</h3><p>「傘面面積是否會影響紙降落傘的下降時間？」</p><p class="small muted">條件明確、結果可測量，也方便控制其他變因。</p></div>
+      </div>
+      <div class="example" style="margin-top:22px;">句型：<br>「＿＿＿是否會影響＿＿＿？」<br>「當＿＿＿改變時，＿＿＿會有什麼變化？」</div>
+      <div class="slideNo">3 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>3. 研究問題要能「測量」</h2>
+      <p>學生常會提出很有趣的問題，但科展研究需要把感覺轉成可以記錄的數據。</p>
+      <table>
+        <tr><th>模糊說法</th><th>改成可測量指標</th><th>可以使用的工具</th></tr>
+        <tr><td>長得比較好</td><td>高度、葉片數、重量、發芽率</td><td>尺、電子秤、紀錄表</td></tr>
+        <tr><td>聲音比較好聽</td><td>音量、頻率、持續時間、波形特徵</td><td>錄音、聲音分析 App</td></tr>
+        <tr><td>飛得比較穩</td><td>飛行距離、偏移距離、成功率</td><td>捲尺、地面標線、影片</td></tr>
+        <tr><td>吸水比較快</td><td>吸水時間、吸水量、擴散面積</td><td>碼表、量筒、方格紙</td></tr>
+      </table>
+      <div class="slideNo">4 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>4. 提出假設：先說出可能的答案</h2>
+      <p class="big">假設不是亂猜，而是根據生活經驗、文獻資料或初步觀察提出的「可驗證推測」。</p>
+      <div class="grid two">
+        <div class="box blue"><h3>假設句型</h3><ul><li>如果＿＿＿增加，則＿＿＿可能會增加。</li><li>當＿＿＿改變時，＿＿＿可能會變小。</li><li>我推測＿＿＿會比＿＿＿更有效，因為＿＿＿。</li></ul></div>
+        <div class="box green"><h3>範例</h3><p>「我推測降落傘傘面面積越大，下降時間越長，因為空氣阻力會增加。」</p></div>
+      </div>
+      <p class="small muted" style="margin-top:22px;">提醒：假設最後可以被支持，也可以不被支持；不符合假設不代表研究失敗。</p>
+      <div class="slideNo">5 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>5. 三種變因：實驗設計的核心</h2>
+      <div class="grid three">
+        <div class="box orange"><h3>操縱變因</h3><p>研究者主動改變的條件。</p><p class="small"><strong>例：</strong>降落傘傘面面積。</p></div>
+        <div class="box blue"><h3>應變變因</h3><p>因操縱變因而測量的結果。</p><p class="small"><strong>例：</strong>降落傘下降時間。</p></div>
+        <div class="box green"><h3>控制變因</h3><p>為了公平比較，需要保持相同的條件。</p><p class="small"><strong>例：</strong>重物重量、投放高度、材質、風力。</p></div>
+      </div>
+      <div class="example" style="margin-top:24px;">一句話原則：一次只改變一個主要條件，其他條件盡量保持一樣。</div>
+      <div class="slideNo">6 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>6. 實驗組與對照組</h2>
+      <p>有些研究需要和「沒有處理」或「標準條件」相比，才能知道改變是否真的有影響。</p>
+      <div class="grid two">
+        <div class="box green"><h3>實驗組</h3><p>接受特定處理或改變條件的組別。</p><p class="small">例：用鹽水澆灌的植物、不同傘面面積的降落傘。</p></div>
+        <div class="box blue"><h3>對照組</h3><p>沒有接受處理，或維持一般標準條件的組別。</p><p class="small">例：用清水澆灌的植物、原始設計的降落傘。</p></div>
+      </div>
+      <p class="big" style="margin-top:24px;"><strong>判斷：</strong>如果沒有對照，學生可能只看到「有變化」，但不知道變化是否來自研究條件。</p>
+      <div class="slideNo">7 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>7. 公平實驗：讓比較站得住腳</h2>
+      <p>公平實驗不是所有條件都完全一樣，而是除了操縱變因之外，其他重要條件都要盡量相同。</p>
+      <table>
+        <tr><th>研究問題</th><th>操縱變因</th><th>需要控制的條件</th></tr>
+        <tr><td>紙飛機翼寬會影響飛行距離嗎？</td><td>翼寬</td><td>紙張、摺法、投擲者、投擲角度、場地風力</td></tr>
+        <tr><td>水溫會影響糖溶解速度嗎？</td><td>水溫</td><td>水量、糖量、杯子、攪拌次數、糖顆粒大小</td></tr>
+        <tr><td>竹管孔徑會影響獨居蜂利用率嗎？</td><td>孔徑</td><td>材質、放置高度、方向、環境、觀察時間</td></tr>
+      </table>
+      <div class="slideNo">8 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>8. 實驗步驟要像「食譜」一樣清楚</h2>
+      <p class="big">好的步驟讓別人看了也能重做，這是科學研究很重要的精神。</p>
+      <div class="grid two">
+        <div class="box red"><h3 class="redText">不夠明確</h3><ul><li>準備不同大小的降落傘。</li><li>從高處放下。</li><li>看看哪一個比較慢。</li></ul></div>
+        <div class="box green"><h3 class="greenText">較完整</h3><ol><li>製作 15、20、25 cm 三種正方形傘面。</li><li>每個傘面綁上相同重量的迴紋針。</li><li>從 2 公尺高度自然放下。</li><li>用碼表記錄落地時間，每組重複 5 次。</li></ol></div>
+      </div>
+      <div class="slideNo">9 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>9. 重複實驗：避免只靠一次結果</h2>
+      <p>一次實驗可能受到手抖、風、器材誤差或偶然事件影響，因此需要重複實驗。</p>
+      <div class="grid three">
+        <div class="box green"><h3>至少 3 次</h3><p>初步研究可先用 3 次重複，確認趨勢是否一致。</p></div>
+        <div class="box blue"><h3>建議 5 次以上</h3><p>科展作品若時間允許，每組 5 次以上更能增加可信度。</p></div>
+        <div class="box orange"><h3>使用平均值</h3><p>可計算平均、範圍，必要時標示明顯異常值。</p></div>
+      </div>
+      <div class="example" style="margin-top:24px;">提醒學生：科學不是找「最漂亮的一次」，而是看多次資料呈現的整體趨勢。</div>
+      <div class="slideNo">10 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>10. 資料紀錄表要先設計好</h2>
+      <p>先設計紀錄表，可以避免實驗做完才發現少記了重要資料。</p>
+      <table>
+        <tr><th>組別</th><th>操縱變因</th><th>第1次</th><th>第2次</th><th>第3次</th><th>第4次</th><th>第5次</th><th>平均</th><th>備註</th></tr>
+        <tr><td>A</td><td>15 cm</td><td></td><td></td><td></td><td></td><td></td><td></td><td>是否有偏移</td></tr>
+        <tr><td>B</td><td>20 cm</td><td></td><td></td><td></td><td></td><td></td><td></td><td>是否有翻轉</td></tr>
+        <tr><td>C</td><td>25 cm</td><td></td><td></td><td></td><td></td><td></td><td></td><td>是否碰到牆</td></tr>
+      </table>
+      <p class="small muted">備註欄很重要：可以記錄意外狀況，幫助後續判斷資料是否可靠。</p>
+      <div class="slideNo">11 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>11. 研究設計範例一：降落傘</h2>
+      <div class="grid two">
+        <div class="box green"><h3>研究問題</h3><p>傘面面積是否會影響紙降落傘的下降時間？</p><h3>假設</h3><p>傘面越大，下降時間越長。</p></div>
+        <div class="box blue"><h3>變因設定</h3><p><span class="pill">操縱：傘面面積</span><span class="pill">應變：下降時間</span><span class="pill">控制：材質、重量、高度、放手方式</span></p></div>
+      </div>
+      <div class="box orange" style="margin-top:20px;"><h3>實驗設計</h3><p>製作三種傘面大小，每種重複 5 次，記錄下降時間並計算平均，觀察是否有明顯趨勢。</p></div>
+      <div class="slideNo">12 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>12. 研究設計範例二：植物生長</h2>
+      <div class="grid two">
+        <div class="box green"><h3>研究問題</h3><p>不同光照時間是否會影響綠豆苗的生長高度？</p><h3>假設</h3><p>光照時間較長的綠豆苗，可能長得較高或葉片較健康。</p></div>
+        <div class="box blue"><h3>變因設定</h3><p><span class="pill">操縱：光照時間</span><span class="pill">應變：高度、葉片數</span><span class="pill">控制：水量、土壤、容器、種子數</span></p></div>
+      </div>
+      <table>
+        <tr><th>組別</th><th>光照條件</th><th>每日紀錄</th><th>研究天數</th></tr>
+        <tr><td>A</td><td>全日照</td><td>高度、葉片數、照片</td><td>7～14 天</td></tr>
+        <tr><td>B</td><td>半日照</td><td>高度、葉片數、照片</td><td>7～14 天</td></tr>
+        <tr><td>C</td><td>遮光</td><td>高度、葉片數、照片</td><td>7～14 天</td></tr>
+      </table>
+      <div class="slideNo">13 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>13. 研究設計範例三：聲音與結構</h2>
+      <div class="grid two">
+        <div class="box green"><h3>研究問題</h3><p>雨聲筒內部障礙物排列方式是否會影響聲音持續時間與波峰密度？</p><h3>可測量指標</h3><p>聲音持續時間、平均音量、波峰數、波形變化。</p></div>
+        <div class="box blue"><h3>變因設定</h3><p><span class="pill">操縱：障礙物排列</span><span class="pill">應變：聲音資料</span><span class="pill">控制：筒身材質、長度、填充物、錄音距離</span></p></div>
+      </div>
+      <div class="box orange" style="margin-top:20px;"><h3>資料收集建議</h3><p>每種結構錄音 5 次，固定翻轉角度與速度，使用同一支麥克風與同一錄音距離，避免環境噪音干擾。</p></div>
+      <div class="slideNo">14 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>14. 常見錯誤與修正方式</h2>
+      <table>
+        <tr><th>常見錯誤</th><th>可能問題</th><th>修正方式</th></tr>
+        <tr><td>一次改變太多條件</td><td>不知道是哪個因素造成結果</td><td>一次只測一個操縱變因</td></tr>
+        <tr><td>沒有重複實驗</td><td>結果可能只是偶然</td><td>每組至少 3～5 次以上</td></tr>
+        <tr><td>紀錄只寫「很好、很快」</td><td>無法分析與比較</td><td>改成時間、長度、數量、比例等數據</td></tr>
+        <tr><td>實驗步驟太簡略</td><td>別人無法重做</td><td>寫清楚材料規格、數量、時間與操作方式</td></tr>
+        <tr><td>結論超出資料</td><td>證據不足</td><td>只根據實驗資料回答研究問題</td></tr>
+      </table>
+      <div class="slideNo">15 / 16</div>
+    </div></section>
+
+    <section class="slide"><div class="canvas">
+      <h2>15. 實驗研究設計檢核表</h2>
+      <div class="grid two">
+        <div class="box green"><h3>設計前檢查</h3><ul><li>研究問題是否清楚？</li><li>是否能測量或觀察？</li><li>假設是否有理由？</li><li>操縱、應變、控制變因是否明確？</li></ul></div>
+        <div class="box blue"><h3>執行前檢查</h3><ul><li>是否有實驗組與對照組？</li><li>步驟是否能讓別人重做？</li><li>每組是否有重複實驗？</li><li>紀錄表是否包含單位與備註？</li></ul></div>
+      </div>
+      <div class="example" style="margin-top:22px;">教師提問：如果別班同學照著你的方法做，能不能做出同樣的實驗？</div>
+      <div class="slideNo">16 / 16</div>
+    </div></section>
+  </main>
+  <div class="controls">
+    <button class="secondary" onclick="go(-1)">上一頁</button>
+    <span id="counter" class="tiny">1 / 16</span>
+    <button onclick="go(1)">下一頁</button>
+    <button class="secondary" onclick="window.print()">列印 / 另存 PDF</button>
+  </div>
+  <script>
+    const slides=[...document.querySelectorAll('.slide')];
+    let index=0;
+    function show(i){
+      index=(i+slides.length)%slides.length;
+      slides.forEach((s,n)=>s.classList.toggle('active',n===index));
+      document.getElementById('counter').textContent=`${index+1} / ${slides.length}`;
+      document.getElementById('progress').style.width=`${((index+1)/slides.length)*100}%`;
+    }
+    function go(d){show(index+d)}
+    document.addEventListener('keydown',e=>{
+      if(['ArrowRight','PageDown',' '].includes(e.key)) go(1);
+      if(['ArrowLeft','PageUp'].includes(e.key)) go(-1);
+      if(e.key==='Home') show(0);
+      if(e.key==='End') show(slides.length-1);
+    });
+    show(0);
+  </script>
+</body>
+</html>
