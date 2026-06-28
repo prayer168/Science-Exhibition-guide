@@ -307,13 +307,11 @@
     if (externalDeck) {
       progressList.innerHTML = decks
         .map((item, index) => {
-          const itemDeck = externalDecks[item.id];
-          const pageLabel = itemDeck ? `（${itemDeck.pages} 頁）` : "";
           return `
         <li>
           <button type="button" data-deck-jump="${index}" aria-current="${index === deckIndex}">
             <span>${item.no}</span>
-            <span>${escapeHtml(item.title)}${pageLabel}</span>
+            <span>${escapeHtml(item.title)}</span>
           </button>
         </li>
       `;
