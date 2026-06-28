@@ -214,6 +214,11 @@
       src: "science_fair_topic_slides.html",
       pages: 12,
       label: "完整簡報"
+    },
+    literature: {
+      src: "science_fair_literature_review_slides.html",
+      pages: 13,
+      label: "完整簡報"
     }
   };
 
