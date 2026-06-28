@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>科展題目的訂定｜教學簡報</title>
+<style>
+  :root{
+    --bg:#f7fbf4; --ink:#23342f; --muted:#5f716a; --green:#2f7d59; --lime:#a8d977;
+    --yellow:#ffd166; --orange:#f4a261; --blue:#6bb6ff; --card:#ffffff; --line:#dbe8d4;
+  }
+  *{box-sizing:border-box} html,body{margin:0;height:100%;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink);background:linear-gradient(135deg,#eaf7df,#eef8ff)}
+  .deck{height:100vh;overflow:hidden;position:relative}
+  .slide{display:none;height:100vh;width:100vw;padding:54px 70px 64px;position:absolute;inset:0;background:radial-gradient(circle at 88% 14%,rgba(168,217,119,.35),transparent 23%),radial-gradient(circle at 8% 88%,rgba(107,182,255,.20),transparent 25%),var(--bg)}
+  .slide.active{display:block;animation:fade .25s ease} @keyframes fade{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}
+  h1{font-size:58px;line-height:1.12;margin:0 0 18px;font-weight:900;letter-spacing:.02em} h2{font-size:42px;line-height:1.15;margin:0 0 24px;font-weight:900;color:#1f5c42} h3{font-size:26px;margin:0 0 12px;color:#2f7d59} p,li{font-size:23px;line-height:1.55} ul{padding-left:1.2em;margin:0}.small{font-size:18px;color:var(--muted)}.lead{font-size:30px;max-width:850px;color:#36514a}.tag{display:inline-block;background:#e7f5d7;border:2px solid #c7e8a6;border-radius:999px;padding:8px 18px;font-size:20px;font-weight:700;color:#2f6d50}.grid{display:grid;gap:20px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.card{background:rgba(255,255,255,.86);border:2px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 16px 32px rgba(37,71,52,.08)}.bigcard{padding:32px}.emoji{font-size:46px;display:block;margin-bottom:10px}.num{width:48px;height:48px;border-radius:50%;display:inline-grid;place-items:center;background:var(--green);color:#fff;font-weight:900;margin-right:12px}.bar{height:14px;background:linear-gradient(90deg,var(--green),var(--lime),var(--yellow));border-radius:99px;margin:18px 0 26px}.footer{position:absolute;bottom:26px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;color:#739083;font-size:16px}.progress{position:absolute;bottom:0;left:0;height:7px;background:linear-gradient(90deg,var(--green),var(--lime));width:0}.nav{position:absolute;right:24px;bottom:22px;display:flex;gap:10px}.nav button{border:0;border-radius:14px;background:#285d45;color:white;font-size:20px;padding:10px 15px;cursor:pointer}.title-visual{position:absolute;right:70px;bottom:100px;width:355px;height:355px;border-radius:44px;background:linear-gradient(145deg,#fff,#e8f7e1);border:3px solid #d5ebca;display:grid;place-items:center;box-shadow:0 25px 55px rgba(45,99,67,.16)}.magnify{font-size:160px}.quote{font-size:31px;line-height:1.45;font-weight:800;color:#24533f}.formula{font-size:27px;font-weight:900;background:#fff7d6;border:2px dashed #e2b93f;border-radius:22px;padding:18px;text-align:center}.bad{border-color:#ffc0b5;background:#fff5f2}.good{border-color:#a9dfb5;background:#f4fff7}.table{width:100%;border-collapse:separate;border-spacing:0 12px}.table td,.table th{font-size:20px;padding:13px 16px;background:white;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.table th{background:#e7f5d7}.table td:first-child,.table th:first-child{border-left:1px solid var(--line);border-radius:14px 0 0 14px;font-weight:800}.table td:last-child,.table th:last-child{border-right:1px solid var(--line);border-radius:0 14px 14px 0}.pill{display:inline-block;padding:6px 12px;border-radius:999px;background:#eef7ff;color:#27608e;font-size:18px;font-weight:700;margin:3px}.check li{margin:8px 0}.check li::marker{content:"✓  ";color:var(--green);font-weight:900}.warn li::marker{content:"✕  ";color:#d25b4c;font-weight:900}.kbd{font-family:ui-monospace,monospace;background:#26382f;color:#fff;border-radius:8px;padding:3px 8px;font-size:17px}.source li{font-size:17px;margin:7px 0;color:#4f655d}.timer{font-size:54px;font-weight:900;color:#2f7d59}.flow{display:flex;align-items:center;gap:12px;margin-top:20px}.flow .step{flex:1;text-align:center;font-size:21px;font-weight:800;background:white;border:2px solid #dbe8d4;border-radius:22px;padding:18px}.arrow{font-size:34px;color:#5f8d6d}.mini{font-size:19px;line-height:1.42}.cover{padding-top:90px}.cover h1{max-width:760px}.cover .lead{max-width:760px}.topline{width:140px;height:10px;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--yellow));margin-bottom:24px}
+  @media print{.slide{display:block;position:relative;page-break-after:always}.nav,.progress{display:none}body,.deck{height:auto;overflow:visible}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+<section class="slide cover active">
+  <div class="topline"></div><span class="tag">國小科展指導｜題目訂定</span>
+  <h1>科展題目的訂定：<br>從生活好奇到可研究問題</h1>
+  <p class="lead">這份簡報帶學生練習：如何尋找題目、判斷好題目、把模糊想法改寫成可以實驗、可以測量、可以討論的科展題目。</p>
+  <div class="title-visual"><div class="magnify">🔍</div></div>
+</section>
+<section class="slide">
+  <h2>1｜科展題目不是「找一個很厲害的主題」</h2>
+  <div class="grid g2">
+    <div class="card bigcard"><span class="emoji">🌱</span><h3>真正的起點</h3><p class="quote">我觀察到什麼現象？<br>我對哪裡感到奇怪？<br>我能不能用實驗找答案？</p></div>
+    <div class="card bigcard"><span class="emoji">🧪</span><h3>科展重點</h3><ul class="check"><li>從生活情境取材</li><li>學生能親自動腦、動手</li><li>有清楚變因與可測量資料</li><li>不是單純做模型或查資料</li></ul></div>
+  </div>
+  <p class="small">依據全國中小學科展精神：科學性、教育性、生活性、真實性與安全性。</p>
+</section>
+<section class="slide">
+  <h2>2｜尋找題目的 6 個入口</h2>
+  <div class="grid g3">
+    <div class="card"><span class="emoji">👀</span><h3>生活觀察</h3><p class="mini">校園、家中、路上、自然課實驗中反覆出現的現象。</p></div>
+    <div class="card"><span class="emoji">❓</span><h3>奇怪問題</h3><p class="mini">「為什麼會這樣？」比「我要做什麼？」更容易長出好題目。</p></div>
+    <div class="card"><span class="emoji">🔁</span><h3>改造舊題</h3><p class="mini">換材料、換環境、換測量方法、加上比較組。</p></div>
+    <div class="card"><span class="emoji">📚</span><h3>文獻延伸</h3><p class="mini">看歷屆作品、科普文章，找出尚未解決或可在校園驗證的問題。</p></div>
+    <div class="card"><span class="emoji">🛠️</span><h3>工具啟發</h3><p class="mini">感測器、手機錄音、慢動作攝影、簡易顯微鏡都能帶出題目。</p></div>
+    <div class="card"><span class="emoji">🌏</span><h3>在地議題</h3><p class="mini">校園植物、昆蟲旅館、食農、節能、雨水、空氣、聲音等。</p></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>3｜從「現象」長成「研究問題」</h2>
+  <div class="formula">觀察現象 → 提出疑問 → 找出變因 → 設計測量 → 寫成題目</div>
+  <div class="flow"><div class="step">葉子有水珠</div><div class="arrow">→</div><div class="step">水珠從哪來？</div><div class="arrow">→</div><div class="step">植物種類、濕度、時間</div><div class="arrow">→</div><div class="step">水珠數量／重量</div></div>
+  <div class="card bigcard" style="margin-top:26px"><h3>改寫示例</h3><p>模糊題目：植物會不會流汗？<br><b>可研究題目：</b>不同葉片表面特徵對葉面水珠形成量的影響。</p></div>
+</section>
+<section class="slide">
+  <h2>4｜什麼才是好題目？5 個判斷標準</h2>
+  <div class="grid g2">
+    <div class="card good"><h3>✅ 好題目通常具備</h3><ul class="check"><li>有明確研究對象</li><li>有主要操縱變因</li><li>有可測量結果</li><li>學生能在時間內完成</li><li>有比較、分析或新角度</li></ul></div>
+    <div class="card bad"><h3>⚠️ 需要修改的題目</h3><ul class="warn"><li>只做展示：火山爆發模型</li><li>只查資料：植物的介紹</li><li>範圍太大：環境污染研究</li><li>無法測量：哪種植物最漂亮</li><li>安全或倫理風險太高</li></ul></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>5｜好題目的句型公式</h2>
+  <div class="card bigcard"><p class="quote">「不同＿＿＿對＿＿＿的影響」</p><p>最容易讓學生看見研究對象、操縱變因與應變變因。</p></div>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3>對象</h3><p>紙飛機、種子、雨聲筒、昆蟲旅館、植物葉片、水溶液</p></div>
+    <div class="card"><h3>操縱變因</h3><p>材質、角度、溫度、濃度、光照、孔徑、填充物</p></div>
+    <div class="card"><h3>測量結果</h3><p>飛行距離、發芽率、聲音強度、使用率、降溫速度</p></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>6｜把題目改得更像科展題</h2>
+  <table class="table"><tr><th>原本想法</th><th>問題</th><th>修正後題目</th></tr>
+  <tr><td>做一個降落傘</td><td>偏作品製作</td><td>不同傘面面積對降落傘滯空時間的影響</td></tr>
+  <tr><td>哪種豆子長最快？</td><td>要說清楚條件</td><td>不同浸泡時間對綠豆發芽率與芽長的影響</td></tr>
+  <tr><td>昆蟲旅館觀察</td><td>缺少比較</td><td>不同孔徑竹管對獨居蜂入住情形的影響</td></tr>
+  <tr><td>雨聲筒很好聽</td><td>主觀感受</td><td>不同填充物對雨聲筒聲音波峰密度與音量的影響</td></tr></table>
+</section>
+<section class="slide">
+  <h2>7｜題目要能切出「變因」</h2>
+  <div class="grid g3">
+    <div class="card"><span class="emoji">🎛️</span><h3>操縱變因</h3><p class="mini">研究者故意改變的條件：材質、濃度、角度、孔徑。</p></div>
+    <div class="card"><span class="emoji">📏</span><h3>應變變因</h3><p class="mini">被測量的結果：長度、時間、溫度、音量、數量。</p></div>
+    <div class="card"><span class="emoji">🔒</span><h3>控制變因</h3><p class="mini">要保持一樣：水量、距離、時間、容器、測量工具。</p></div>
+  </div>
+  <div class="card bigcard" style="margin-top:24px"><h3>小提醒</h3><p>如果一個題目說不出這三種變因，通常還不夠成熟。</p></div>
+</section>
+<section class="slide">
+  <h2>8｜評估題目的「可行性」</h2>
+  <div class="grid g2">
+    <div class="card"><h3>學生版檢查表</h3><ul class="check"><li>兩週內能做出第一輪測試嗎？</li><li>材料容易取得且安全嗎？</li><li>每組至少能重複 3 次以上嗎？</li><li>資料能用數字、照片或表格記錄嗎？</li></ul></div>
+    <div class="card"><h3>老師版檢查表</h3><ul class="check"><li>是否符合年級能力與課綱概念？</li><li>是否避免抄襲、代做與危險實驗？</li><li>是否能形成討論，而非只得到一個答案？</li><li>是否有機會做出在地或創新角度？</li></ul></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>9｜題目範例：自然與生活科技</h2>
+  <div class="grid g2">
+    <div class="card"><h3>生命科學／環境</h3><p><span class="pill">植物</span><span class="pill">昆蟲</span><span class="pill">校園生態</span></p><ul><li>不同遮光程度對向日葵幼苗生長的影響</li><li>不同巢管孔徑對昆蟲旅館入住率的影響</li><li>不同土壤覆蓋物對土壤保水效果的影響</li></ul></div>
+    <div class="card"><h3>物理／工程</h3><p><span class="pill">聲音</span><span class="pill">力學</span><span class="pill">能源</span></p><ul><li>不同紙張厚度對紙陀螺旋轉時間的影響</li><li>不同翼型對紙飛機飛行距離與穩定度的影響</li><li>不同容器材質對熱水降溫速度的影響</li></ul></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>10｜學生常見地雷與修正方向</h2>
+  <div class="grid g2">
+    <div class="card bad"><h3>地雷 1：題目太大</h3><p>「氣候變遷對生態的影響」</p><p><b>修正：</b>改成校園可測的範圍，例如「不同覆蓋材料對土壤降溫效果的影響」。</p></div>
+    <div class="card bad"><h3>地雷 2：只有製作沒有研究</h3><p>「自製太陽能車」</p><p><b>修正：</b>加入比較，例如「不同太陽能板角度對模型車移動距離的影響」。</p></div>
+    <div class="card bad"><h3>地雷 3：結果太主觀</h3><p>「哪種雨聲筒最好聽」</p><p><b>修正：</b>改成可量化：音量、波形、持續時間、波峰密度。</p></div>
+    <div class="card bad"><h3>地雷 4：一次改太多條件</h3><p>材質、大小、重量、角度全部一起換。</p><p><b>修正：</b>一次只改一個主要變因，其他條件盡量固定。</p></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>11｜10 分鐘題目生成活動</h2>
+  <div class="grid g2">
+    <div class="card bigcard"><div class="timer">10:00</div><h3>任務流程</h3><ol><li>寫下 3 個生活中覺得奇怪的現象。</li><li>每個現象改寫成「為什麼／如果……會怎樣」。</li><li>選一個最可行的問題，圈出操縱變因與測量結果。</li><li>用句型公式寫成科展題目。</li></ol></div>
+    <div class="card bigcard"><h3>產出格式</h3><p><b>我觀察到：</b>＿＿＿＿＿＿</p><p><b>我想研究：</b>不同＿＿對＿＿的影響</p><p><b>我會測量：</b>＿＿＿＿＿＿</p><p><b>我會控制：</b>＿＿＿＿＿＿</p></div>
+  </div>
+</section>
+<section class="slide">
+  <h2>12｜總結：好題目是一個「可以被驗證的好奇」</h2>
+  <div class="card bigcard"><p class="quote">好科展題目 = 生活觀察 + 明確變因 + 可測量資料 + 學生能親自完成 + 安全真實</p></div>
+  <div class="grid g2" style="margin-top:22px"><div class="card"><h3>下一步</h3><ul class="check"><li>蒐集 5 篇相關作品或資料</li><li>畫出實驗流程圖</li><li>先做小規模預試</li><li>再決定正式題目</li></ul></div><div class="card"><h3>參考來源</h3><ul class="source"><li>國立臺灣科學教育館「全國中小學科學展覽會」與實施要點。</li><li>教育部主管法規「中華民國中小學科學展覽會實施要點」。</li><li>科展製作指導經驗分享：題目宜符合興趣、具體可行、具價值，並包含研究對象與主要變項關係。</li></ul></div></div>
+</section>
+<div class="footer"><span>科展題目的訂定｜黑熊老師自然科學教學簡報</span><span id="pageNo">1 / 12</span></div>
+<div class="progress" id="progress"></div><div class="nav"><button onclick="prev()">←</button><button onclick="next()">→</button></div>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+function show(n){i=(n+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('active',k===i));document.getElementById('pageNo').textContent=(i+1)+' / '+slides.length;document.getElementById('progress').style.width=((i+1)/slides.length*100)+'%'}
+function next(){show(i+1)}function prev(){show(i-1)}
+document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key))next();if(['ArrowLeft','PageUp'].includes(e.key))prev();if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});show(0);
+</script>
+</body>
+</html>

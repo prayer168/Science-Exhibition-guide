@@ -253,15 +253,17 @@
   const visualOrder = ["cover", "goals", "concept", "sequence", "activity", "mistakes", "checklist", "output", "next"];
 
   const sceneWords = {
-    topic: ["??", "??", "??", "??"],
-    literature: ["??", "??", "??", "??"],
-    motivation: ["??", "??", "??", "??"],
-    design: ["??", "??", "??", "??"],
-    data: ["??", "??", "??", "??"],
-    discussion: ["??", "??", "??", "??"],
-    report: ["??", "??", "??", "??"],
-    oral: ["??", "??", "??", "??"]
+    topic: ["好奇", "變因", "測量", "題目"],
+    literature: ["來源", "方法", "缺口", "引用"],
+    motivation: ["觀察", "疑問", "目的", "動機"],
+    design: ["自變因", "依變因", "對照", "安全"],
+    data: ["原始資料", "圖表", "趨勢", "判讀"],
+    discussion: ["發現", "原因", "限制", "結論"],
+    report: ["摘要", "方法", "圖表", "參考"],
+    oral: ["短講", "數據", "答詢", "修正"]
   };
+
+  let sceneLabelQueue = [];
 
   function sceneTheme(flow, slide) {
     const order = visualOrder.indexOf(slide.visual);
@@ -278,7 +280,9 @@
   }
 
   function node(text, left, top, width = 25, height = 18) {
-    return `<span class="scene-node" style="left:${left}%;top:${top}%;width:${width}%;height:${height}%">${escapeHtml(text)}</span>`;
+    const rawText = String(text);
+    const label = /^\?+$/.test(rawText) && sceneLabelQueue.length ? sceneLabelQueue.shift() : rawText;
+    return `<span class="scene-node" style="left:${left}%;top:${top}%;width:${width}%;height:${height}%">${escapeHtml(label)}</span>`;
   }
 
   function line(left, top, width, rot = 0) {
@@ -311,6 +315,7 @@
 
   function renderSceneCanvas(flow, slide) {
     const words = sceneWords[flow.id] || ["??", "??", "??", "??"];
+    sceneLabelQueue = [...words, slide.kicker, flow.title, ...words, slide.sideTitle];
     const type = slide.visual;
     const flowSpecific = {
       topic: {
@@ -409,7 +414,7 @@
     const order = visualOrder.indexOf(type) + 1;
     const labels = (sceneWords[flow.id] || []).slice(0, 4);
     return `
-      <div class="slide-visual css-scene scene-${flow.id}-${type}" style="${sceneTheme(flow, slide)}" aria-label="${escapeHtml(flow.title)}?${escapeHtml(slide.kicker)}??">
+      <div class="slide-visual css-scene scene-${flow.id}-${type}" style="${sceneTheme(flow, slide)}" aria-label="${escapeHtml(flow.title)}：${escapeHtml(slide.kicker)}插圖">
         <div class="scene-title">
           <span>${escapeHtml(flow.title)}</span>
           <span class="scene-number">${flow.no}-${order}</span>
