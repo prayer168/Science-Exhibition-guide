@@ -229,6 +229,11 @@
       src: "science_fair_experimental_design_slides.html",
       pages: 32,
       label: "完整簡報"
+    },
+    data: {
+      src: "science_fair_data_analysis_slides.html",
+      pages: 16,
+      label: "完整簡報"
     }
   };
 
