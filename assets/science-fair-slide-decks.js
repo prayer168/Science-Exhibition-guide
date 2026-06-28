@@ -209,6 +209,13 @@
   }
 
   const decks = flows.map((flow) => ({ ...flow, slides: buildSlides(flow) }));
+  const externalDecks = {
+    topic: {
+      src: "science_fair_topic_slides.html",
+      pages: 12,
+      label: "完整簡報"
+    }
+  };
 
   const deckSelect = document.getElementById("deck-select");
   const slideEl = document.getElementById("web-slide");
@@ -217,6 +224,8 @@
   const nextBtn = document.getElementById("next-slide");
   const fullBtn = document.getElementById("fullscreen-slide");
   const stage = document.getElementById("slide-stage");
+  const deckControls = document.querySelector(".deck-controls");
+  const slideHint = document.querySelector(".slide-hint");
 
   if (!deckSelect || !slideEl || !progressList) return;
 
@@ -238,6 +247,20 @@
   }
 
   function renderProgress(deck) {
+    const externalDeck = externalDecks[deck.id];
+    progressList.classList.toggle("external-deck", Boolean(externalDeck));
+    if (externalDeck) {
+      progressList.innerHTML = `
+        <li>
+          <button type="button" aria-current="true">
+            <span>${deck.no}</span>
+            <span>${escapeHtml(externalDeck.label)}（${externalDeck.pages} 頁）</span>
+          </button>
+        </li>
+      `;
+      return;
+    }
+
     progressList.innerHTML = deck.slides
       .map((slide, index) => `
         <li>
@@ -431,9 +454,34 @@
 
   function renderSlide() {
     const deck = decks[deckIndex];
-    const slide = deck.slides[slideIndex];
+    const externalDeck = externalDecks[deck.id];
     deckSelect.value = String(deckIndex);
     renderProgress(deck);
+    slideEl.classList.toggle("external-slide", Boolean(externalDeck));
+    deckControls?.classList.toggle("external-mode", Boolean(externalDeck));
+    if (slideHint) {
+      slideHint.textContent = externalDeck
+        ? "這份簡報使用原始 HTML 檔呈現，頁數與播放控制以內嵌簡報為準。"
+        : "提示：鍵盤 ← → 可翻頁，Esc 可離開全螢幕。";
+    }
+
+    if (externalDeck) {
+      prevBtn.hidden = true;
+      nextBtn.hidden = true;
+      slideEl.innerHTML = `
+        <iframe
+          class="external-deck-frame"
+          src="${escapeHtml(externalDeck.src)}"
+          title="${escapeHtml(deck.title)}"
+          loading="lazy"
+          allowfullscreen></iframe>
+      `;
+      return;
+    }
+
+    prevBtn.hidden = false;
+    nextBtn.hidden = false;
+    const slide = deck.slides[slideIndex];
     slideEl.innerHTML = `
       <div class="web-slide-head">
         <div>
@@ -464,6 +512,7 @@
 
   function moveSlide(delta) {
     const deck = decks[deckIndex];
+    if (externalDecks[deck.id]) return;
     slideIndex += delta;
     if (slideIndex < 0) {
       deckIndex = (deckIndex - 1 + decks.length) % decks.length;
@@ -504,6 +553,7 @@
   document.addEventListener("keydown", (event) => {
     const activeTag = document.activeElement?.tagName;
     if (activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT") return;
+    if (externalDecks[decks[deckIndex].id]) return;
     if (event.key === "ArrowRight") moveSlide(1);
     if (event.key === "ArrowLeft") moveSlide(-1);
   });

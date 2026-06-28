@@ -2138,9 +2138,34 @@
       font-size: .95rem;
     }
 
+    .web-slide.external-slide {
+      display: block;
+      min-height: clamp(620px, 72vw, 840px);
+      padding: 0;
+      overflow: hidden;
+      background: #f7fbf4;
+    }
+
+    .external-deck-frame {
+      display: block;
+      width: 100%;
+      height: clamp(620px, 72vw, 840px);
+      border: 0;
+      background: #f7fbf4;
+    }
+
+    .deck-progress-list.external-deck button {
+      cursor: default;
+      transform: none;
+    }
+
     .deck-controls {
       padding: 16px 18px;
       background: #fbfdfc;
+    }
+
+    .deck-controls.external-mode {
+      justify-content: flex-end;
     }
 
     .deck-button {
@@ -2174,6 +2199,16 @@
         padding: 24px 18px;
       }
 
+      .web-slide.external-slide {
+        padding: 0;
+      }
+
+      .web-slide.external-slide,
+      .external-deck-frame {
+        min-height: 560px;
+        height: 560px;
+      }
+
       .web-slide-body,
       .slide-side {
         grid-template-columns: 1fr;
@@ -2183,6 +2218,12 @@
         grid-column: auto;
         min-height: 230px;
       }
+    }
+
+    .slide-stage:fullscreen .web-slide.external-slide,
+    .slide-stage:fullscreen .external-deck-frame {
+      width: 100%;
+      height: calc(100vh - 56px);
     }
   </style>
 </head>
@@ -2334,9 +2375,9 @@
         <div class="section-head">
           <div>
             <h2>八大流程網頁簡報</h2>
-            <p>每一個流程各 9 頁，適合直接在網站內投影授課。可用流程選單切換章節，或用上一頁、下一頁與鍵盤左右鍵播放。</p>
+            <p>每一個流程依教材需求安排頁數，適合直接在網站內投影授課。已提供完整 HTML 的流程會保留原始版型與播放控制，其他流程可陸續替換。</p>
           </div>
-          <span class="tag">8 組 × 9 頁</span>
+          <span class="tag">頁數依主題</span>
         </div>
         <div class="deck-shell">
           <aside class="deck-picker" aria-label="簡報章節選擇">
