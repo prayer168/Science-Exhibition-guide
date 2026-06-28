@@ -239,6 +239,11 @@
       src: "science_fair_discussion_conclusion_slides.html",
       pages: 16,
       label: "完整簡報"
+    },
+    report: {
+      src: "science_fair_written_report_slides.html",
+      pages: 16,
+      label: "完整簡報"
     }
   };
 
